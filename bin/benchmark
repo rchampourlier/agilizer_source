@@ -1,0 +1,48 @@
+#!/usr/bin/env ruby
+
+# Load dependencies
+require 'rubygems'
+require 'bundler/setup'
+require 'pry'
+require 'benchmark'
+
+$LOAD_PATH.unshift File.expand_path('../..', __FILE__)
+require 'config/boot'
+
+require 'jira_cache'
+require 'agilizer/interface/jira/transformation'
+
+require 'thread/pool'
+
+Benchmark.bm do |x|
+  loop_size = 1000
+  issues_count = 100
+  source_issues = JiraCache::Issue.limit(issues_count).entries
+  x.report('seq: ') do
+    loop_size.times do
+      source_issues.each do |source_issue|
+        Agilizer::Interface::Jira::Transformation.run(source_issue.data)
+      end
+    end
+  end
+  x.report('par: ') do
+    loop_pool = Thread.pool(loop_size)
+    loop_size.times do
+      loop_pool.process do
+        transformation_pool = Thread.pool(issues_count)
+        source_issues.each do |source_issue|
+          transformation_pool.process do
+            Agilizer::Interface::Jira::Transformation.run(source_issue.data)
+          end
+        end
+        transformation_pool.shutdown
+      end
+    end
+    loop_pool.shutdown
+  end
+end
+
+# Results with loop_size = 1000, issues_count = 100
+# user     system      total        real
+# seq: 167.080000   7.350000 174.430000 (177.328385)
+# par:   5.090000   1.750000   6.840000 (  6.601040)

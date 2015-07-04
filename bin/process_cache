@@ -1,0 +1,30 @@
+#!/usr/bin/env ruby
+
+# Load dependencies
+require 'rubygems'
+require 'bundler/setup'
+
+$LOAD_PATH.unshift File.expand_path('../..', __FILE__)
+require 'config/boot'
+
+require 'agilizer'
+require 'agilizer/issue'
+
+logger = Logger.new(STDOUT)
+logger.level = Logger::DEBUG
+
+require 'jira_cache'
+require 'agilizer/interface/jira'
+
+t_start = Time.now
+
+JiraCache::Issue.each do |cached_issue|
+  notifier = Agilizer::Interface::Jira::Notifier.new(logger: logger)
+  event_data = {
+    key: cached_issue.key,
+    data: cached_issue.data
+  }
+  notifier.publish 'fetched_issue', event_data
+end
+
+logger.info "process_cache finished in #{Time.now - t_start}s"

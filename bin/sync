@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby
+
+# Load dependencies
+require 'rubygems'
+require 'bundler/setup'
+
+$LOAD_PATH.unshift File.expand_path('../..', __FILE__)
+require 'config/boot'
+
+logger = Logger.new(STDOUT)
+logger.level = Logger.const_get(ENV['AGILIZER_JIRA_LOG_LEVEL'].to_sym)
+
+require 'agilizer/interface/jira'
+Agilizer::Interface::Jira.import(ENV['AGILIZER_JIRA_PROJECT_KEY'],
+  domain: ENV['AGILIZER_JIRA_DOMAIN'],
+  username: ENV['AGILIZER_JIRA_USERNAME'],
+  password: ENV['AGILIZER_JIRA_PASSWORD'],
+  logger: logger
+)

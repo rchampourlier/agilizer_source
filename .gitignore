@@ -1,0 +1,6 @@
+*.DS_Store
+/.bundle
+/.env
+/out
+/script/process_json.rb
+/tmp
