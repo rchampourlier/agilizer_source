@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 # Base
+gem 'pry' # used on production console too
 gem 'rake'
 gem 'activesupport'
 gem 'mongoid'
@@ -18,7 +19,6 @@ gem 'jira_cache',
 
 group :development do
   gem 'dotenv'
-  gem 'pry'
   gem 'pry-byebug'
   gem 'pry-stack_explorer'
   gem 'guard'
