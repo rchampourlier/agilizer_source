@@ -1,6 +1,7 @@
 *.DS_Store
 /.bundle
 /.env
+/coverage
 /out
 /script/process_json.rb
 /tmp
