@@ -1,5 +1,9 @@
 # Agilizer
 
+[![Build Status](https://travis-ci.org/rchampourlier/agilizer.svg)](https://travis-ci.org/rchampourlier/agilizer)
+[![Coverage Status](https://coveralls.io/repos/rchampourlier/agilizer/badge.svg?branch=master&service=github)](https://coveralls.io/github/rchampourlier/agilizer?branch=master)
+[![Code Climate](https://codeclimate.com/github/rchampourlier/agilizer/badges/gpa.svg)](https://codeclimate.com/github/rchampourlier/agilizer)
+
 Easy access to useful statistics for Agile teams. It is intended to work
 with several project management solutions, but currently only JIRA is
 supported.
