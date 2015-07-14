@@ -7,6 +7,7 @@ gem 'pry' # used on production console too
 gem 'rake'
 gem 'activesupport'
 gem 'mongoid'
+gem 'puma'
 
 # Processing
 gem 'thread'
