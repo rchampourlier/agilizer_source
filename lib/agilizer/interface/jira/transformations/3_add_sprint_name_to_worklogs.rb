@@ -5,10 +5,10 @@ module Agilizer
     module Jira
       module Transformations
 
+        # For each worklog of the processing data, add 'sprint_name' corresponding
+        # to the sprint_name of the issue at the time of the worklog.
         module AddSprintNameToWorklogs
 
-          # For each worklog of the processing data, add 'sprint_name' corresponding
-          # to the sprint_name of the issue at the time of the worklog.
           def run(_source_data, processing_data)
             worklogs = processing_data['worklogs']
             return processing_data if worklogs.blank?
