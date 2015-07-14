@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/rchampourlier/jira_cache
-  revision: 5d7861253eec832e19fd70e99cad5a3294403237
+  revision: 484cfbcea0c4fe263e0193f466ec8f90a428a062
   ref: master
   specs:
     jira_cache (0.0.1)

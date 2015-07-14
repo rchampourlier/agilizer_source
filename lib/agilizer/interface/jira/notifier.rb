@@ -29,8 +29,8 @@ module Agilizer
             UpdateManager.run(transformed_data)
             logger.info "Updated issue #{issue_key}"
           rescue => e
-            issue_key = event_data[:key]
-            logger.fatal "Failed to write transformed data for #{issue_key} (#{e})"
+            logger.critical "Failed to write transformed data for #{issue_key} (#{e})"
+            logger.critical e.caller
           end
         end
 
