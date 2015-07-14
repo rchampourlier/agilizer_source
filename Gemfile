@@ -3,7 +3,6 @@ source 'https://rubygems.org'
 ruby '2.2.1'
 
 # Base
-gem 'pry' # used on production console too
 gem 'rake'
 gem 'activesupport'
 gem 'mongoid'
@@ -20,6 +19,10 @@ gem 'jira_cache',
   git: 'https://github.com/rchampourlier/jira_cache',
   ref: :master
 
+# Required in production group too
+gem 'pry' # for console
+gem 'rspec' # for Rakefile
+
 group :development do
   gem 'dotenv'
   gem 'pry-byebug'
@@ -32,7 +35,6 @@ group :development do
 end
 
 group :test do
-  gem 'rspec'
   gem 'rack-test'
   gem 'coveralls', require: false
   gem 'simplecov', require: false
