@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/rchampourlier/jira_cache
-  revision: 484cfbcea0c4fe263e0193f466ec8f90a428a062
+  revision: a17555d33feadca1764724e8322d63bfac71ff92
   ref: master
   specs:
     jira_cache (0.0.1)
@@ -63,7 +63,7 @@ GEM
       shellany (~> 0.0)
       thor (>= 0.18.1)
     guard-compat (1.2.1)
-    guard-rspec (4.6.1)
+    guard-rspec (4.6.2)
       guard (~> 2.1)
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
