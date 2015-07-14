@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.2.1'
+
 # Base
 gem 'pry' # used on production console too
 gem 'rake'
