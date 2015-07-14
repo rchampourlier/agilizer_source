@@ -42,7 +42,7 @@ module Agilizer
           transformations_dir = File.expand_path('../transformations', __FILE__)
           groups = Dir[File.join(transformations_dir, '*.rb')].group_by do |file|
             File.basename(file)[/^(\d)+/, 1]
-          end
+          end.sort
           groups.values.collect do |files|
             files.collect do |file|
               require file
