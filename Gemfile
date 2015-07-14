@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 # Base
+gem 'rake'
 gem 'activesupport'
 gem 'mongoid'
 

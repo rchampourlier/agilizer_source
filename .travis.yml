@@ -7,4 +7,4 @@ services:
 env:
   global:
     - JIRA_CACHE_ENV=test
-    - JIRA_CACHE_MONGODB_URI=mongodb://127.0.0.1:27017/jira_cache
+    - JIRA_CACHE_MONGODB_URI=mongodb://127.0.0.1:27017/agilizer
