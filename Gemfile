@@ -19,6 +19,11 @@ gem 'jira_cache',
   git: 'https://github.com/rchampourlier/jira_cache',
   ref: :master
 
+# API
+gem 'rack-cors'
+gem 'grape'
+gem 'grape-rabl'
+
 # Required in production group too
 gem 'pry' # for console
 gem 'rspec' # for Rakefile
