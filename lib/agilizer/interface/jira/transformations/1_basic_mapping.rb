@@ -22,6 +22,12 @@ module Agilizer
 
           # Returns the mapping to be used, loading it
           # from `config/mapping.json`
+          #
+          # NB: this mapping is a custom mapping for a given JIRA instance
+          #   and **will not** be adapted for other projects. You **must**
+          #   ajust it according to your project. In particular for fields
+          #   with `customfield` in the path.
+          #
           # TODO add mapping injection
           def mapping
             {
@@ -40,6 +46,8 @@ module Agilizer
               'labels'                 => { path: 'fields.labels' },
               'category'               => { path: 'fields.customfield_10400.value' },
               'assignee'               => { path: 'fields.assignee.name' },
+              'developer'              => { path: 'fields.customfield_10600.key' },
+              'reviewer'               => { path: 'fields.customfield_10601.key' },
 
               'fix_versions'  => {
                 path: 'fields.fixVersions',

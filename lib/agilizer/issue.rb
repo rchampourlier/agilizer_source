@@ -33,13 +33,17 @@ module Agilizer
     field :time_original_estimate, type: Numeric
     field :time_estimate, type: Numeric
 
-    # Mapped data
+    # People
+    field :assignee, type: String
+    field :developer, type: String
+    field :reviewer, type: String
+
+    # Details
     field :summary, type: String
     field :status, type: String
     field :type, type: String
     field :labels, type: Array
     field :category, type: String
-    field :assignee, type: String
     field :fix_versions, type: Array
     field :sprints, type: Array
     field :worklogs, type: Array
