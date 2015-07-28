@@ -64,9 +64,10 @@ bin/console
 
 ## Getting started
 
+To reprocess all cached issues:
+
 ```
-JiraCache::Client.set_config <jira_domain>, <jira_username>, <jira_password>
-JiraCache::Client.sync_issues <jira_project_key>
+bin/process_cache
 ```
 
 ### Understanding
