@@ -28,7 +28,7 @@ module Agilizer
         source: data['source']
       )
       if issues.count > 1
-        fail "Found multiple issues for identifier \"#{identifier}\" and source \"#{source}\""
+        fail "Found multiple issues for identifier \"#{data['identifier']}\" and source \"#{source}\""
       end
       return nil if issues.count == 0
       issues.first
