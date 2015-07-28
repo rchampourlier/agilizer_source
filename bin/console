@@ -4,11 +4,15 @@
 require 'rubygems'
 require 'bundler/setup'
 
-$LOAD_PATH.unshift File.expand_path('../..', __FILE__)
+root_dir = File.expand_path('../..', __FILE__)
+$LOAD_PATH.unshift(root_dir)
 require 'config/boot'
 
 require 'agilizer'
 require 'agilizer/issue'
+
+issue_analysis_dir = File.join(root_dir, 'lib/agilizer/issue_analysis')
+Dir["#{issue_analysis_dir}/*.rb"].each { |f| require f }
 
 require 'pry'
 Pry.start
