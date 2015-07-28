@@ -1,4 +1,5 @@
 require 'mongoid'
+require 'agilizer/issue_filter'
 
 module Agilizer
 
@@ -52,5 +53,7 @@ module Agilizer
     field :history, type: Array
     field :final_fix_version, type: String
     field :timespent_per_status, type: Array
+
+    extend IssueFilter
   end
 end

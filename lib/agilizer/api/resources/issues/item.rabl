@@ -1,3 +1,8 @@
 object @issue
 
-attributes :identifier, :summary
+attributes  :category,
+            :developer,
+            :identifier,
+            :reviewer,
+            :status,
+            :summary

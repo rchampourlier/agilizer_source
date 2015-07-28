@@ -1,4 +1,5 @@
 require 'agilizer/api'
+require 'agilizer/issue_analysis/statistics'
 
 module Agilizer
   class API
@@ -9,23 +10,12 @@ module Agilizer
 
       Payload: optional, JSON, filter as proposed by
         filter.possible in the response.
-
-      Returns:
-          {
-            issues: {
-              entries: [ ... ],
-              start: Numeric,
-              count: Numeric,
-              total: Numeric
-            }
-            filter: {
-              applied: { ... },
-              possible: { ... }
-            }
-          }
       END
       get rabl: 'issues/collection' do
-        @issues = Issue.limit(100)
+        @applied_filter = params[:filter] || {}
+        @available_filter = Issue.available_filter
+        @issues = Issue.with_filter(@applied_filter).all
+        @statistics = IssueAnalysis::Statistics.calculate(@issues)
       end
     end
   end
