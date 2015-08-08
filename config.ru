@@ -23,8 +23,8 @@ map '/api' do
   end
 
   # Mount the API
-  require 'agilizer/api'
-  run Agilizer::API
+  require 'agilizer/api/app'
+  run Agilizer::API::App
 end
 
 map '/jira' do
