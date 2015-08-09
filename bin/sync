@@ -1,5 +1,12 @@
 #!/usr/bin/env ruby
 
+# Fetches new and updated issues from the sources,
+# processes them and saves them as `Agilizer::Issue`
+# records.
+#
+# Usage:
+#     bin/sync
+
 # Load dependencies
 require 'rubygems'
 require 'bundler/setup'

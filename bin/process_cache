@@ -1,5 +1,8 @@
 #!/usr/bin/env ruby
 
+# Processes all `Agilizer::Issue` records. Applies the transformation
+# on the source data and saves the new result in each record.
+
 # Load dependencies
 require 'rubygems'
 require 'bundler/setup'
