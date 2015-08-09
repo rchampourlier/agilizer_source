@@ -15,9 +15,11 @@ module Agilizer
           # adding the history's creation time on each time.
           #
           # Supported items are items for fields:
-          #   - 'Sprint', which is mapped to 'sprints'
+          #   - 'Sprint' => 'sprints'
           #   - 'timeestimate' => 'time_estimate'
           #   - 'timeoriginalestimate' => 'time_original_estimate'
+          #   - 'status'
+          #   - 'assignee'
           #
           # @param [Hash] Issue's data
           # @return [Array] hashes representing history

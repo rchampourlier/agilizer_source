@@ -15,8 +15,8 @@ module Agilizer
 
             enriched_worklogs = worklogs.map do |worklog|
               time = worklog['time']
-              sprint_names = Support.value_at_time(processing_data, 'sprints', time) || []
-              worklog.merge 'sprint_name' => sprint_names.last
+              # These are actually sprint names due to the way history and value_at_time work
+              worklog.merge 'sprint_name' => Support.value_at_time(processing_data, 'sprints', time)
             end
 
             processing_data.merge 'worklogs' => enriched_worklogs

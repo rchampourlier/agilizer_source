@@ -4,8 +4,23 @@ module Agilizer
       module Transformations
         module Support
 
+          VALUE_AT_TIME_AUTHORIZED_FIELDS = %w(
+            sprints
+            time_estimate
+            time_original_estimate
+            status
+            assignee
+          )
+
           # Return the value for an issue (from its data)
           # for a given field at a given time.
+          #
+          # The value is read from the issue's history (which must
+          # be added using `AddSimpleHistory` transformation prior
+          # to using this method).
+          #
+          # If can only be used for `VALUE_AT_TIME_AUTHORIZED_FIELDS`
+          # (see `AddSimpleHistory`).
           #
           # Rules:
           #   - if no history on this field is found, then the value is
@@ -27,22 +42,38 @@ module Agilizer
           #   to the history present in processing_data. If `time` is nil, returns nil.
           #
           def value_at_time(processing_data, field, time)
+            # unless field.in? VALUE_AT_TIME_AUTHORIZED_FIELDS
+            # if field == 'field'
+            #   require 'pry-remote'
+            #   binding.remote_pry
+            # end
+            fail "Invalid field \"#{field}\"" unless field.in? VALUE_AT_TIME_AUTHORIZED_FIELDS
+
             return nil if time.nil?
             history = processing_data['history']
             fail 'Processing data must have been processed by `AddSimpleHistory`' if history.nil?
 
             field_history = HashOp::Filter.filter history, { 'field' => field }
-            return processing_data[field] if field_history.empty?
+            if field_history.empty?
+              if field == 'sprints'
+                sprints = processing_data['sprints']
+                return sprints.any? ? sprints.last['name'] : nil
+              end
+              return processing_data[field]
+            end
 
             first_history_before_time = field_history.reverse.find do |history_item|
               history_item['time'] <= time
             end
-            return first_history_before_time['to'] if first_history_before_time
+            return Array(first_history_before_time['to']).last if first_history_before_time
+            # We return the last of an array because for the "sprints" field,
+            # the field may be a list of sprint names instead of a single value.
 
             first_history_after_time = field_history.find do |history_item|
               history_item['time'] > time
             end
-            return first_history_after_time['from'] if first_history_after_time
+            return Array(first_history_after_time['from']).last if first_history_after_time
+            # Same comment as above.
 
             nil
           end

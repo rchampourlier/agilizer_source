@@ -11,7 +11,7 @@ describe Agilizer::Interface::Jira::Transformations::AddSimpleHistory do
       @result = described_class.run(@source_data, {})['history']
     end
 
-    it 'should only contain supported historiesra_issues' do
+    it 'should only contain supported histories' do
       fields = @result.map { |r| r['field'] }.uniq.sort
       expect(fields).to eq %w(
         assignee

@@ -7,7 +7,7 @@ describe Agilizer::Interface::Jira::Transformations::Support do
 
   let(:source_data) { SpecCase.get_jira_issues(1).first }
   let(:time) { Time.now }
-  let(:field) { 'field' }
+  let(:field) { 'assignee' }
 
   describe '::value_at_time(processing_data, field, time)' do
 
@@ -20,10 +20,15 @@ describe Agilizer::Interface::Jira::Transformations::Support do
       end
     end
 
+    context 'field is not authorized' do
+      let(:field) { 'field' }
+      it 'raises an error'
+    end
+
     context 'when there is no history' do
       let(:processing_data) do
         {
-          'field' => 'current field value',
+          'assignee' => 'current field value',
           'history' => []
         }
       end
@@ -40,7 +45,7 @@ describe Agilizer::Interface::Jira::Transformations::Support do
         {
           'history' => [
             {
-              'field' => 'field',
+              'field' => field,
               'time' => (time - 1.second),
               'from' => 1,
               'to' => 2
@@ -61,7 +66,7 @@ describe Agilizer::Interface::Jira::Transformations::Support do
         {
           'history' => [
             {
-              'field' => 'field',
+              'field' => field,
               'time' => (time + 1.second),
               'from' => 1,
               'to' => 2

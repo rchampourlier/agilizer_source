@@ -10,7 +10,8 @@ describe Agilizer::Interface::Jira::Transformations::AddSprintNameToWorklogs do
   let(:processing_data) do
     processing_data = Agilizer::Interface::Jira::Transformations::BasicMapping.run(source_data, {})
     processing_data = Agilizer::Interface::Jira::Transformations::AddSimpleHistory.run(source_data, processing_data)
-    Agilizer::Interface::Jira::Transformations::SetWorklogTime.run(source_data, processing_data)
+    processing_data = Agilizer::Interface::Jira::Transformations::SetWorklogTime.run(source_data, processing_data)
+    processing_data
   end
 
   describe '::run(source_data, processing_data)' do
