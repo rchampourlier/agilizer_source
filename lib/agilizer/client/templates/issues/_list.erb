@@ -1,0 +1,16 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Issues</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% issues.each do |issue| %>
+      <tr class="issue-list-item">
+        <td>
+          <%= erb :'issues/_list_item', locals: { issue: issue } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

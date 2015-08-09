@@ -24,14 +24,18 @@ gem 'rack-cors'
 gem 'grape'
 gem 'grape-rabl'
 
+# client
+gem 'sinatra'
+
 # Required in production group too
 gem 'pry' # for console
 gem 'rspec' # for Rakefile
 
 group :development do
   gem 'dotenv'
-  gem 'pry-byebug'
-  gem 'pry-stack_explorer'
+  gem 'pry-remote'
+  # gem 'pry-byebug'
+  # gem 'pry-stack_explorer'
   gem 'guard'
   gem 'guard-rspec', require: false
   gem 'guard-shotgun'

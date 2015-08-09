@@ -1,0 +1,23 @@
+<div class="col-sm-3 col-md-2 sidebar">
+  <ul class="nav nav-sidebar">
+    <% navbar_items.each do |item| %>
+      <% if request.path =~ %r{^/client/#{item[:link]}$} %>
+        <li class="active"><a href="/client/<%= item[:link] %>"><%= item[:title] %> <span class="sr-only">(current)</span></a></li>
+      <% else %>
+        <li><a href="/client/<%= item[:link] %>"><%= item[:title] %></a></li>
+      <% end %>
+    <% end %>
+  </ul>
+  <!-- <ul class="nav nav-sidebar">
+    <li><a href="">Nav item</a></li>
+    <li><a href="">Nav item again</a></li>
+    <li><a href="">One more nav</a></li>
+    <li><a href="">Another nav item</a></li>
+    <li><a href="">More navigation</a></li>
+  </ul>
+  <ul class="nav nav-sidebar">
+    <li><a href="">Nav item again</a></li>
+    <li><a href="">One more nav</a></li>
+    <li><a href="">Another nav item</a></li>
+  </ul> -->
+</div>

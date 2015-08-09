@@ -1,0 +1,31 @@
+<div>
+  <strong><%= issue.identifier %></strong>
+  <span><%= issue.summary %></span>
+</div>
+
+<div>
+  <span class="issue-list-item__label label label-default">
+    <%= issue.category %> | <%= issue.type %>
+  </span>
+
+  <% if issue.assignee.present? %>
+    <span class="issue-list-item__label label label-success">
+      <i class="glyphicon glyphicon-headphones"></i>
+      <%= issue.assignee %>
+    </span>
+  <% end %>
+
+  <% if issue.developer.present? %>
+    <span class="issue-list-item__label label label-primary">
+      <i class="glyphicon glyphicon-wrench"></i>
+      <%= issue.developer %>
+    </span>
+  <% end %>
+
+  <% if issue.reviewer.present? %>
+  <span class="issue-list-item__label label label-primary">
+    <i class="glyphicon glyphicon-eye-open"></i>
+    <%= issue.reviewer %>
+  </span>
+  <% end %>
+</div>

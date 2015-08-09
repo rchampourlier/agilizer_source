@@ -36,3 +36,8 @@ map '/jira' do
     logger: logger
   )
 end
+
+map '/client' do
+  require 'agilizer/client/app'
+  run Agilizer::Client::App
+end
