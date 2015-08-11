@@ -18,12 +18,13 @@ module Agilizer
         # Extract team members from statistics.
         def team_members
           @statistics.map do |type, statistics_by_type|
-            statistics_by_type.map(&:keys).flatten
+            statistics_by_type.values.map(&:keys).flatten
           end.flatten.uniq
         end
 
         def get(type, role, team_member)
-          100
+          seconds = @statistics[type][role][team_member]
+          hours = (seconds / 3600.to_f).round(1)
         end
       end
     end
