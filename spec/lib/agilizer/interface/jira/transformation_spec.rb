@@ -70,7 +70,8 @@ describe Agilizer::Interface::Jira::Transformation do
           Agilizer::Interface::Jira::Transformations::AddTimespentToSprints
         ],
         [
-          Agilizer::Interface::Jira::Transformations::AddTimespentPerStatus
+          Agilizer::Interface::Jira::Transformations::AddTimespentPerStatus,
+          Agilizer::Interface::Jira::Transformations::AddTimespentPerStatusPerAuthor
         ]
       ])
     end

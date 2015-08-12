@@ -18,6 +18,8 @@ module Agilizer
 
           # IMPLEMENTATION FUNCTIONS
 
+          # TODO update doc
+          #
           # @param essence [Hash] the essence must:
           #   - include worklogs (Process::map)
           #

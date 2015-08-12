@@ -53,6 +53,7 @@ module Agilizer
     field :history, type: Array
     field :final_fix_version, type: String
     field :timespent_per_status, type: Array
+    field :timespent_per_status_per_author, type: Array
 
     extend IssueFilter
   end
