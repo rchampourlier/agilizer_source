@@ -23,7 +23,8 @@ module Agilizer
           filter[:sprint][:name] = [IssueAnalysis::Sprints.send(:"#{relative_sprint}_sprint_name")]
         end
         if filter[:sprint][:name]
-          item_query = { :$elemMatch => { name: { '$in' => filter[:sprint][:name] } } }
+          sprint_names = Array(filter[:sprint][:name])
+          item_query = { :$elemMatch => { name: { '$in' => sprint_names } } }
           query.merge! sprints: item_query
         end
       end
