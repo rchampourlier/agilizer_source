@@ -1,0 +1,7 @@
+<div class="col-sm-3 col-md-2 sidebar">
+  <ul class="nav nav-sidebar">
+    <% @sprints.each do |sprint| %>
+      <li><a href="/client/sprints/<%= sprint %>"><%= sprint %></a></li>
+    <% end %>
+  </ul>
+</div>

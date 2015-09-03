@@ -1,0 +1,37 @@
+<% if @sprint_name.present? %>
+
+  <h4>Time estimate of issues...</h4>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>where developer is...</th>
+        <th>at sprint start</th>
+        <th>at sprint end</th>
+        <th>now</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% Agilizer::IssueAnalysis::Statistics.time_estimate_by_developer_related_to_sprint(@issues, @sprint_name).each do |developer, time_estimates| %>
+        <% if time_estimates.values.inject(0) { |s, v| s + v } > 0 %>
+          <tr>
+            <td><%= developer %></td>
+            <td><%= present(:Time, time_estimates['sprint_start']) %></td>
+            <td><%= present(:Time, time_estimates['sprint_end']) %></td>
+            <td><%= present(:Time, time_estimates['now']) %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+
+<% else %>
+  <div class="panel panel-warning">
+    <div class="panel-heading">
+      <h3 class="panel-title">Invalid statistics panel</h3>
+    </div>
+    <div class="panel-body">
+      <code>time_estimate_relatively_to_sprint</code> panel requires a sprint name!
+    </div>
+  </div>
+<% end %>

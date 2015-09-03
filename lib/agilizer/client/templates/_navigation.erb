@@ -7,14 +7,17 @@
   </button>
   <a class="navbar-brand" href="#">Agilizer</a>
 </div>
-<!-- <div id="navbar" class="navbar-collapse collapse"> -->
-  <!-- <ul class="nav navbar-nav navbar-right"> -->
-    <!-- <li><a href="#">Dashboard</a></li>
-    <li><a href="#">Settings</a></li>
-    <li><a href="#">Profile</a></li>
-    <li><a href="#">Help</a></li> -->
-  <!-- </ul> -->
+<div id="navbar" class="navbar-collapse collapse">
+  <ul class="nav navbar-nav">
+    <% navigation_items.each do |item| %>
+      <% if request.path =~ %r{^/client/#{item[:link]}$} %>
+        <li class="active"><a href="/client/<%= item[:link] %>"><%= item[:title] %> <span class="sr-only">(current)</span></a></li>
+      <% else %>
+        <li><a href="/client/<%= item[:link] %>"><%= item[:title] %></a></li>
+      <% end %>
+    <% end %>
+  </ul>
   <!-- <form class="navbar-form navbar-right">
     <input type="text" class="form-control" placeholder="Search...">
   </form> -->
-<!-- </div> -->
+</div>

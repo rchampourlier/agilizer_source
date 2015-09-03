@@ -1,0 +1,22 @@
+<h4>Time estimate of issues</h4>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>where...</th>
+      <th>is developer</th>
+      <th>is reviewer</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% Agilizer::IssueAnalysis::Statistics.time_estimate_by_developer_and_reviewer(@issues).each do |team_member, time_estimates| %>
+      <% if time_estimates.values.inject(0) { |s, v| s + v } > 0 %>
+        <tr>
+          <td><%= team_member %></td>
+          <td><%= present(:Time, time_estimates['developer']) %></td>
+          <td><%= present(:Time, time_estimates['reviewer']) %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

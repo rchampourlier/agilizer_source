@@ -1,0 +1,38 @@
+<div class="container-fluid">
+  <div class="row">
+
+    <%= erb :'sprints/_sidebar' %>
+
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <div class="row">
+        <div class="col-md-6">
+        </div>
+        <div class="col-md-6">
+        </div>
+
+        <div class="col-md-12">
+
+          <!-- Nav tabs -->
+          <ul class="nav nav-pills" role="tablist">
+            <li role="presentation" class="active"><a href="#overview" aria-controls="home" role="tab" data-toggle="tab">Overview</a></li>
+            <li role="presentation"><a href="#prepare" aria-controls="profile" role="tab" data-toggle="tab">Prepare</a></li>
+            <li role="presentation"><a href="#issues" aria-controls="messages" role="tab" data-toggle="tab">Issues</a></li>
+          </ul>
+
+          <!-- Tab panes -->
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="overview">
+              <%= erb :'sprints/show/_overview', locals: { issues: @issues, sprint_name: @sprint_name } %>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="prepare">
+              <%= erb :'sprints/show/_prepare', locals: { issues: @issues } %>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="issues">
+              <%= erb :'issues/_list', locals: { issues: @issues } %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

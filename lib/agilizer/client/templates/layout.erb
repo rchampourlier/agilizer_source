@@ -18,8 +18,8 @@
   <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom styles -->
-  <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/issues.css">
+  <link rel="stylesheet" href="/client/css/main.css">
+  <link rel="stylesheet" href="/client/css/issues.css">
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -29,20 +29,14 @@
   <![endif]-->
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+  <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
-      <%= erb :_nav_header %>
+      <%= erb :_navigation %>
     </div>
   </nav>
 
-  <div class="container-fluid">
-    <div class="row">
-      <%= erb :_navbar %>
-      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-        <%= yield %>
-      </div>
-    </div>
-  </div>
+  <%= yield %>
+
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <!-- Latest compiled and minified JavaScript -->

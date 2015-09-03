@@ -1,31 +1,62 @@
-<div>
-  <strong><%= issue.identifier %></strong>
-  <span><%= issue.summary %></span>
-</div>
+<% issue = decorate(:Issue, issue) %>
 
-<div>
-  <span class="issue-list-item__label label label-default">
-    <%= issue.category %> | <%= issue.type %>
-  </span>
+<tr class="issue-list-item">
+  <td>
+    <div>
+      <strong><%= issue.identifier %></strong>
+      <div><%= issue.summary %></div>
+    </div>
 
-  <% if issue.assignee.present? %>
-    <span class="issue-list-item__label label label-success">
-      <i class="glyphicon glyphicon-headphones"></i>
-      <%= issue.assignee %>
+    <div>
+      <div class="issue-list-item__label label label-default">
+        <%= issue.category %> | <%= issue.type %>
+      </div>
+
+      <!-- <% if issue.assignee.present? %>
+        <div class="issue-list-item__label label label-success">
+          <i class="glyphicon glyphicon-headphones"></i>
+          <%= issue.assignee %>
+        </div>
+      <% end %> -->
+
+      <% if issue.developer.present? %>
+        <div class="issue-list-item__label label label-primary">
+          <i class="glyphicon glyphicon-wrench"></i>
+          <%= issue.developer %>
+        </div>
+      <% end %>
+
+      <% if issue.reviewer.present? %>
+      <div class="issue-list-item__label label label-warning">
+        <i class="glyphicon glyphicon-eye-open"></i>
+        <%= issue.reviewer %>
+      </div>
+      <% end %>
+    </div>
+  </td>
+
+  <!-- Time estimates: original, current -->
+  <td>
+    <span class="label label-danger">
+      <%= present(:Time, issue.time_original_estimate) %>
     </span>
-  <% end %>
+    <span class="label label-success">
+      <%= present(:Time, issue.time_estimate) %>
+    </span>
+  </td>
 
-  <% if issue.developer.present? %>
-    <span class="issue-list-item__label label label-primary">
+  <!-- Timespent: in development, in review, total -->
+  <td>
+    <span class="label label-primary">
       <i class="glyphicon glyphicon-wrench"></i>
-      <%= issue.developer %>
+      <%= present(:Time, issue.timespent_for_status('In Development')) %>
     </span>
-  <% end %>
-
-  <% if issue.reviewer.present? %>
-  <span class="issue-list-item__label label label-primary">
-    <i class="glyphicon glyphicon-eye-open"></i>
-    <%= issue.reviewer %>
-  </span>
-  <% end %>
-</div>
+    <span class="label label-warning">
+      <i class="glyphicon glyphicon-eye-open"></i>
+      <%= present(:Time, issue.timespent_for_status('In Review')) %>
+    </span>
+    <span class="label label-default">
+      <%= present(:Time, issue.timespent) %>
+    </span>
+  </td>
+</tr>

@@ -16,7 +16,6 @@ module Agilizer
           @applied_filter = params[:filter] || {}
           @available_filter = Issue.available_filter
           @issues = Issue.with_filter(@applied_filter).all
-          @statistics = IssueAnalysis::Statistics.calculate(@issues)
         end
       end
     end

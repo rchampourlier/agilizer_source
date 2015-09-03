@@ -8,7 +8,7 @@ module Agilizer
 
       # Return sprint names from issues.
       def names
-        Issue.only(:sprints).map(&:sprints).flatten.map{|s| s['name']}.uniq
+        Issue.only(:sprints).map(&:sprints).flatten.map{|s| s['name']}.uniq.sort.reverse
       end
       module_function :names
 

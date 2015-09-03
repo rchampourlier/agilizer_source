@@ -16,12 +16,6 @@ module Agilizer
       query = {}
 
       if filter[:sprint]
-        if (relative_sprint = filter[:sprint][:relative])
-          if !available_filter[:sprint][:relative].include?(relative_sprint)
-            fail "Unknown relative sprint filter \"#{relative_sprint}\""
-          end
-          filter[:sprint][:name] = [IssueAnalysis::Sprints.send(:"#{relative_sprint}_sprint_name")]
-        end
         if filter[:sprint][:name]
           sprint_names = Array(filter[:sprint][:name])
           item_query = { :$elemMatch => { name: { '$in' => sprint_names } } }
@@ -47,7 +41,7 @@ module Agilizer
       # end
 
       # Setting limit from params[:limit] or 100. Max is 100.
-      limit = [(filter[:limit] || 100).to_i, 100].min
+      limit = [(filter[:limit] || 1000).to_i, 1000].min
 
       self.where(query).limit(limit)
     end
