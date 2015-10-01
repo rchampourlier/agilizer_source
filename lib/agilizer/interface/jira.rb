@@ -47,9 +47,9 @@ module Agilizer
       # IMPLEMENTATION METHODS
 
       def client(options)
-        _logger = options[:logger]
-        _notifier = notifier logger: _logger
-        JiraCache::Client.new(options.merge(notifier: _notifier))
+        logger = options[:logger]
+        notifier = notifier(logger: logger)
+        JiraCache::Client.new(options.merge(notifier: notifier))
       end
       module_function :client
 

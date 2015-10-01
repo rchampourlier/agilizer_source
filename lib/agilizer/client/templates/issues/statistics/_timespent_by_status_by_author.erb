@@ -1,0 +1,18 @@
+<h4>Timespent</h4>
+
+<!-- timespent by developer in dev, review and other statuses -->
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Developer</th>
+      <th>In Development</th>
+      <th>In Review</th>
+      <th>Other</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% Agilizer::IssueAnalysis::Statistics.timespent(issues, sprint_name, %w(author status)).each do |team_member, timespents| %>
+      <%= timespents %>
+    <% end %>
+  </tbody>
+</table>

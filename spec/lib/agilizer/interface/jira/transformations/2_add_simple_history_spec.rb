@@ -25,7 +25,7 @@ describe Agilizer::Interface::Jira::Transformations::AddSimpleHistory do
     describe 'flattening history items' do
       it 'should include the time of the containing history' do
         first_result = @result.first
-        histories = HashOp::DeepAccess.fetch @source_data, 'changelog.histories'
+        histories = HashOp::Deep.fetch @source_data, 'changelog.histories'
         history_for_first_result = histories.find do |history|
           original_field =
             case first_result['field']

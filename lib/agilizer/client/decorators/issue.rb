@@ -10,6 +10,7 @@ module Agilizer
         end
 
         def timespent_for_status(status)
+          return nil
           return nil if object.timespent_per_status.nil?
           item_for_status = object.timespent_per_status.find { |i| i['status'] == status }
           item_for_status ? item_for_status['timespent'] : nil

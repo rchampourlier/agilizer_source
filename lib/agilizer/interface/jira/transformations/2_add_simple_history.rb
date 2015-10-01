@@ -30,7 +30,7 @@ module Agilizer
           #   sorted on 'time'
           #
           def run(source_data, processing_data)
-            histories = HashOp::DeepAccess.fetch source_data, 'changelog.histories'
+            histories = HashOp::Deep.fetch source_data, 'changelog.histories'
 
             simplified_histories = histories.map do |history|
               items = history['items']

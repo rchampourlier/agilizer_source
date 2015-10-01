@@ -25,6 +25,8 @@ $LOAD_PATH.unshift File.expand_path('../..', __FILE__) # root
 $LOAD_PATH.unshift File.expand_path('../../spec', __FILE__)
 require 'config/boot'
 
+require 'spec/support/spec_case'
+
 # Cleaning database after each test
 require 'agilizer/issue'
 require 'jira_cache/issue'

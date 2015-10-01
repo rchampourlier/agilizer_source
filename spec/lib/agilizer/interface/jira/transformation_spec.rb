@@ -66,12 +66,7 @@ describe Agilizer::Interface::Jira::Transformation do
           Agilizer::Interface::Jira::Transformations::AddFinalFixVersion,
           Agilizer::Interface::Jira::Transformations::AddSprintInformation,
           Agilizer::Interface::Jira::Transformations::AddSprintNameToWorklogs,
-          Agilizer::Interface::Jira::Transformations::AddStatusToWorklogs,
-          Agilizer::Interface::Jira::Transformations::AddTimespentToSprints
-        ],
-        [
-          Agilizer::Interface::Jira::Transformations::AddTimespentPerStatus,
-          Agilizer::Interface::Jira::Transformations::AddTimespentPerStatusPerAuthor
+          Agilizer::Interface::Jira::Transformations::AddStatusToWorklogs
         ]
       ])
     end
