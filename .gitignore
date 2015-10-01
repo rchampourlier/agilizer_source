@@ -3,5 +3,6 @@
 /.env
 /coverage
 /out
-/script/process_json.rb
+/script/build_all_spec_cases
+/script/build_spec_case_post_process_custom
 /tmp
