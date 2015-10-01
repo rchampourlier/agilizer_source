@@ -79,3 +79,21 @@ The container class for source and processed issue data.
 
 - `data`: source data from JIRA
 - `essence`: results from performed mapping and processing on `data`
+
+## Contributing
+
+### How to add spec case fixtures
+
+```
+bin/build_spec_case ISSUE-KEY 1
+```
+
+This will generate the `spec/fixtures/jira_issues/case_1.json` file, assuming there is a `JiraCache::Issue` with the `ISSUE-KEY` key in the development database.
+
+**Anonymization / post-processing**
+
+You can perform custom post-processing (for example to anonymize your issue) by creating the `bin/build_spec_case_post_process` file (you can use `bin/build_spec_case_post_process_example` to get started).
+
+### Rules
+
+- Please respect the code style (run Rubocop with the rules defined in the project).
