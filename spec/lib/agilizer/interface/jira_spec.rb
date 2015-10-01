@@ -9,11 +9,11 @@ describe Agilizer::Interface::Jira do
   let(:client_options) { { a: 1 } }
   let(:notifier) { double('Notifier') }
 
-  describe '::import(project_key)' do
-    it 'runs JiraCache.sync_issues(client, project_key)' do
+  describe '::import_project(project_key)' do
+    it 'runs JiraCache.sync_project_issues(client, project_key)' do
       expect(described_class).to receive(:client).and_return(client)
-      expect(JiraCache).to receive(:sync_issues).with(client, project_key)
-      described_class.import(project_key, client_options)
+      expect(JiraCache).to receive(:sync_project_issues).with(client, project_key)
+      described_class.import_project(project_key, client_options)
     end
   end
 

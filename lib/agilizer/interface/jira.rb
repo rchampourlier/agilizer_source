@@ -13,7 +13,7 @@ module Agilizer
     #     Agilizer::Interface::Jira::Transformation.run(data)
     module Jira
 
-      # Performs a sync through `JiraCache.sync_issues` format
+      # Performs a sync through `JiraCache.sync_project_issues` format
       # the specified project.
       # JiraCache notifies each issue fetch through the provided
       # notifier, which handles processing the fetched issue
@@ -26,10 +26,15 @@ module Agilizer
       #   - password [String] JIRA password
       #   - logger [Logger] the logger used by the JIRA client to log
       #     operations
-      def import(project_key, client_options)
-        JiraCache.sync_issues(client(client_options), project_key)
+      def import_project(project_key, client_options)
+        JiraCache.sync_project_issues(client(client_options), project_key)
       end
-      module_function :import
+      module_function :import_project
+
+      def import_issue(issue_key, client_options)
+        JiraCache.sync_issue(client(client_options), issue_key)
+      end
+      module_function :import_issue
 
       # @param client_options [Hash] same as `::import`
       #
