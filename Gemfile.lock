@@ -54,6 +54,8 @@ GEM
       unf (>= 0.0.5, < 1.0.0)
     dotenv (2.0.2)
     equalizer (0.0.11)
+    faker (1.5.0)
+      i18n (~> 0.5)
     ffi (1.9.10)
     formatador (0.2.5)
     grape (0.12.0)
@@ -101,7 +103,7 @@ GEM
     lumberjack (1.0.9)
     method_source (0.8.2)
     mime-types (2.6.1)
-    minitest (5.7.0)
+    minitest (5.8.0)
     mongoid (4.0.2)
       activemodel (~> 4.0)
       moped (~> 2.0.0)
@@ -205,6 +207,7 @@ DEPENDENCIES
   awesome_print
   coveralls
   dotenv
+  faker
   grape
   grape-rabl
   guard
@@ -227,4 +230,4 @@ DEPENDENCIES
   thread
 
 BUNDLED WITH
-   1.10.5
+   1.10.6
