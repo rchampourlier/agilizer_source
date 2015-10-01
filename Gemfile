@@ -12,7 +12,8 @@ gem 'puma'
 gem 'thread'
 gem 'hash_op',
   git: 'https://github.com/rchampourlier/hash_op',
-  ref: :master
+  ref: 'master'
+# gem 'hash_op', path: '~/Dev/_personal/+agilizer/hash_op'
 
 # Interfaces
 gem 'jira_cache',

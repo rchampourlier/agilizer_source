@@ -1,5 +1,5 @@
 base: &default
-  sessions:
+  clients:
     default:
       uri: <%= ENV['AGILIZER_MONGODB_URI'] %>
 
@@ -10,7 +10,7 @@ development:
   <<: *default
 
 test:
-  sessions:
+  clients:
     default:
       uri: <%= ENV['AGILIZER_MONGODB_URI'] %>_test
       safe: true
