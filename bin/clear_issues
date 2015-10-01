@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+
+# Clear cache and performs a full sync.
+#
+# Usage:
+#     bin/rebuild
+
+# Load dependencies
+require 'rubygems'
+require 'bundler/setup'
+
+$LOAD_PATH.unshift File.expand_path('../..', __FILE__)
+require 'config/boot'
+
+require 'agilizer/issue'
+Agilizer::Issue.destroy_all

@@ -41,6 +41,7 @@ group :development do
   gem 'guard-shotgun'
   gem 'terminal-notifier-guard'
   gem 'awesome_print'
+  gem 'faker' # for build_spec_case_post_process
 end
 
 group :test do

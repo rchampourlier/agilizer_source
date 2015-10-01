@@ -1,0 +1,48 @@
+#!/usr/bin/env ruby
+
+# Load dependencies
+require 'rubygems'
+require 'bundler/setup'
+
+root_dir = File.expand_path('../..', __FILE__)
+$LOAD_PATH.unshift(root_dir)
+require 'config/boot'
+
+require 'agilizer'
+require 'agilizer/issue'
+
+SPEC_DIR = File.expand_path('../../spec/fixtures/jira_issues', __FILE__)
+fixtures_count = Dir[File.join(SPEC_DIR, '*.json')].count
+
+def message_and_exit(message)
+  puts message
+  exit(1)
+end
+
+def usage_and_exit
+  message_and_exit('Usage: bin/build_spec_case ISSUE-KEY [FIXTURE-ID]')
+end
+
+issue_key = ARGV[0]
+usage_and_exit if issue_key.blank?
+
+fixture_id = ARGV[1] || fixtures_count + 1
+
+puts "Building spec case for issue #{issue_key}"
+
+post_processing = File.expand_path('../build_spec_case_post_process_custom', __FILE__)
+do_post_processing = File.exist?(post_processing)
+load post_processing if do_post_processing
+
+require 'jira_cache/issue'
+issue_data = JiraCache::Issue.where(key: issue_key).first.try(:data)
+message_and_exit("Could not find issue #{issue_key}") if issue_data.nil?
+
+new_file = File.join(SPEC_DIR, "case_#{fixture_id}.json")
+File.open(new_file, 'w') do |file|
+  issue_data = build_spec_case_post_process_issue(issue_data) if do_post_processing
+  json = issue_data.to_json
+  json = build_spec_case_post_process_json(json) if do_post_processing
+  file.write(json)
+end
+puts "Wrote #{new_file} with data from issue #{issue_key}"

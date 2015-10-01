@@ -1,0 +1,18 @@
+#!/usr/bin/env ruby
+
+# Clear cache and performs a full sync.
+#
+# Usage:
+#     bin/rebuild
+
+# Load dependencies
+require 'rubygems'
+require 'bundler/setup'
+
+$LOAD_PATH.unshift File.expand_path('../..', __FILE__)
+require 'config/boot'
+
+require 'jira_cache/issue'
+require 'jira_cache/project_state'
+JiraCache::Issue.destroy_all
+JiraCache::ProjectState.destroy_all

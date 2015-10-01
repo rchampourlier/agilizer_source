@@ -1,0 +1,50 @@
+require 'faker'
+
+# Duplicate this file to `build_spec_case_post_process_custom`
+# and define the following methods to apply post-processing
+# on spec case data.
+
+# Applied on the issue as an `Hash` before
+# being transformed to JSON and written to file.
+def build_spec_case_post_process_issue(issue)
+  summary = Faker::Lorem.sentence
+  description = Faker::Lorem.paragraphs(3)
+  custom_field = Faker::Lorem.sentence
+  fields = {
+    'summary' => summary,
+    'description' => description,
+    'Some Custom Field' => custom_field
+    'customfield_1234' => custom_field
+  }
+  fields.each do |name, value|
+    issue['fields'][name] = summary
+    issue['renderedFields'][name] = summary
+    issue['changelog']['histories'].each do |history|
+      history['items'].each do |item|
+        if item['field'] == name
+          item['fromString'] = value
+          item['toString'] = "#{value} with a change"
+        end
+      end
+    end
+  end
+  issue
+end
+
+# Applied on the issue JSON before being written
+# to file.
+def build_spec_case_post_process_json(json)
+  json = File.read(file_path)
+
+  json.gsub! 'SP', 'SPECKEY'
+  json.gsub! 'SecretProject', 'TheProject'
+
+  json.gsub! 'SecretCompany', 'TheCompany'
+  json.gsub! 'secretcompany', 'the.company'
+
+  json.gsub! 'secretperson', 'team.member.X'
+  json.gsub! 'Secret Person', 'Team Member X'
+
+  json.gsub! secretclient', 'some_client'
+  json.gsub!(/secret Client/i, 'SomeClient')
+end
