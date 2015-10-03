@@ -41,6 +41,7 @@ module Agilizer
 
     # Details
     field :summary, type: String
+    field :description, type: String
     field :status, type: String
     field :type, type: String
     field :labels, type: Array

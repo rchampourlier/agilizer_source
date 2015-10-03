@@ -39,6 +39,7 @@ module Agilizer
               'status'                 => { path: 'fields.status.name' },
               'resolved_at'            => { path: 'fields.resolutiondate' },
               'summary'                => { path: 'fields.summary' },
+              'description'            => { path: 'fields.description' },
               'type'                   => { path: 'fields.issuetype.name' },
               'timespent'              => { path: 'fields.timespent' },
               'time_original_estimate' => { path: 'fields.timeoriginalestimate' },
