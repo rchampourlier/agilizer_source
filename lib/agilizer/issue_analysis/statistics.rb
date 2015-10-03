@@ -40,7 +40,7 @@ module Agilizer
 
       #
       # Usage:
-      #   sprint_data(
+      #   sum_sprint_data(
       #     issues,
       #     sprint_name,
       #     'developer',
@@ -82,6 +82,13 @@ module Agilizer
       end
       module_function :sum_sprint_data
 
+      # Example
+      # ::timespent(issues, sprint_name, %w(author status))
+      # # => [
+      #   { "author"=>"dev1", "status"=>"Open", "timespent"=>3720},
+      #   { "author"=>"dev1", "status"=>"In Development", "timespent"=>35880},
+      #   {"author"=>"dev2", "status"=>"In Review", "timespent"=>12300
+      # ]
       def timespent(issues, sprint_name, grouping_attributes)
         worklogs = issues.map(&:worklogs).flatten
         sprint_worklogs = HashOp::Filter.filter(worklogs, 'sprint_name' => sprint_name)

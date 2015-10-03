@@ -1,0 +1,21 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <% table[:columns].each do |key, column| %>
+        <th><%= column[:header] %></th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% table[:rows].each do |row| %>
+      <tr>
+        <% table[:columns].each do |key, column| %>
+          <td>
+            <% presenter = Agilizer::Client::Presenters.for_type(column[:type]) %>
+            <%= presenter.present(row[key]) %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
