@@ -70,9 +70,23 @@ To reprocess all cached issues:
 bin/process_cache
 ```
 
-### Understanding
+## Troubleshooting
 
-#### Definitions
+### Refreshing cached issue
+
+```
+jira_client_options = {
+  domain: ENV['AGILIZER_JIRA_DOMAIN'],
+  username: ENV['AGILIZER_JIRA_USERNAME'],
+  password: ENV['AGILIZER_JIRA_PASSWORD'],
+  logger: Logger.new(STDOUT)
+}
+Agilizer::Interface::Jira.import_issue(issue_key, jira_client_options)
+```
+
+## Understanding
+
+### Definitions
 
 **`Issue`**
 The container class for source and processed issue data.
