@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/rchampourlier/jira_cache
-  revision: a17555d33feadca1764724e8322d63bfac71ff92
+  revision: 92e5e3a4570eb9d32eddc7a7ad80477779f6a7cb
   ref: master
   specs:
     jira_cache (0.0.1)
@@ -39,7 +39,7 @@ GEM
     coderay (1.1.0)
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
-    coveralls (0.8.2)
+    coveralls (0.8.3)
       json (~> 1.8)
       rest-client (>= 1.6.8, < 2)
       simplecov (~> 0.10.0)
@@ -49,7 +49,7 @@ GEM
       thread_safe (~> 0.3, >= 0.3.1)
     diff-lcs (1.2.5)
     docile (1.1.5)
-    domain_name (0.5.24)
+    domain_name (0.5.25)
       unf (>= 0.0.5, < 1.0.0)
     dotenv (2.0.2)
     equalizer (0.0.11)
@@ -217,6 +217,7 @@ DEPENDENCIES
   rack-cors
   rack-test
   rake
+  rest-client
   rspec
   simplecov
   simplecov-json

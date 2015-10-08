@@ -19,6 +19,10 @@ gem 'hash_op',
 gem 'jira_cache',
   git: 'https://github.com/rchampourlier/jira_cache',
   ref: :master
+# gem 'jira_cache', path: '~/Dev/_personal/+agilizer/jira_cache'
+
+# Enrichments
+gem 'rest-client'
 
 # API
 gem 'rack-cors'
