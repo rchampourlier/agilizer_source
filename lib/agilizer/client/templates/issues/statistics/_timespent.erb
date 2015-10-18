@@ -9,8 +9,9 @@ result = timespents.each_with_object({}) do |timespent_entry, hash|
   author = timespent_entry['author']
   status = timespent_entry['status']
   hash[author] ||= { 'author' => author }
-  hash[author][status] ||= 0
-  hash[author][status] += timespent_entry['timespent'] || 0
+  result_status = status.in?(['In Development', 'In Review']) ? status : 'Other'
+  hash[author][result_status] ||= 0
+  hash[author][result_status] += timespent_entry['timespent'] || 0
 end
 %>
 
@@ -18,7 +19,8 @@ end
 columns = {
   'author' => { header: 'Author', type: :string },
   'In Development' => { header: 'In Dev', type: :time },
-  'In Review' => { header: 'In Review', type: :time }
+  'In Review' => { header: 'In Review', type: :time },
+  'Other' => { header: 'Other', type: :time }
 }
 %>
 

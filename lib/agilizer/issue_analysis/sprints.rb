@@ -21,6 +21,21 @@ module Agilizer
         current_sprint['name']
       end
       module_function :current_sprint_name
+
+      # Return reports for the last (most recent) `last` sprints.
+      # @param last [Numeric] number of sprints to provide reports for
+      def report(sprint_name)
+        sprint_issues = Issue.with_filter(sprint: { name: sprint_name })
+        sprint_report = IssueAnalysis::Statistics.sprint_data(
+          sprint_issues,
+          sprint_name,
+          'developer',
+          %w(sprint_start sprint_end),
+          'time_estimate'
+        )
+        sprint_report.map { |report_item| report_item.merge('sprint_name' => sprint_name) }
+      end
+      module_function :report
     end
   end
 end
