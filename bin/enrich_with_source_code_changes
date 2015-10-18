@@ -1,0 +1,31 @@
+#!/usr/bin/env ruby
+#
+# Process all `Agilizer::Issue` to fetch code changes
+# from Github according to the pull request information
+# in the issue.
+#
+# Uses the `Agilizer::Enrichments::SourceCodeChange` module.
+#
+# Usage:
+#   bin/enrich_with_source_code_changes
+
+# Load dependencies
+require 'rubygems'
+require 'bundler/setup'
+
+$LOAD_PATH.unshift File.expand_path('../..', __FILE__)
+require 'config/boot'
+
+require 'agilizer'
+require 'agilizer/issue'
+
+logger = Logger.new(STDOUT)
+logger.level = Logger::DEBUG
+
+require 'agilizer/issue'
+require 'agilizer/enrichments/source_code_changes'
+
+Agilizer::Issue.each do |issue|
+  Agilizer::Enrichments::SourceCodeChanges.run(issue.identifier)
+  logger.info "Processed issue #{issue.identifier}"
+end
