@@ -1,8 +1,8 @@
 require 'spec_helper'
 require 'support/spec_case'
-require 'agilizer/interface/jira/transformation'
+require 'agilizer/interface/jira/transformations'
 
-describe Agilizer::Interface::Jira::Transformation do
+describe Agilizer::Interface::Jira::Transformations do
   let(:transformation_1_addition) { { gone_through_1: true } }
   let(:transformation_2_addition) { { gone_through_2: true } }
 
@@ -60,6 +60,7 @@ describe Agilizer::Interface::Jira::Transformation do
         ],
         [
           Agilizer::Interface::Jira::Transformations::AddSimpleHistory,
+          Agilizer::Interface::Jira::Transformations::ExtractGithubPullRequestsFromComments,
           Agilizer::Interface::Jira::Transformations::SetWorklogTime
         ],
         [

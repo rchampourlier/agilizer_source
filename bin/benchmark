@@ -10,7 +10,7 @@ $LOAD_PATH.unshift File.expand_path('../..', __FILE__)
 require 'config/boot'
 
 require 'jira_cache'
-require 'agilizer/interface/jira/transformation'
+require 'agilizer/interface/jira/transformations'
 
 require 'thread/pool'
 
@@ -21,7 +21,7 @@ Benchmark.bm do |x|
   x.report('seq: ') do
     loop_size.times do
       source_issues.each do |source_issue|
-        Agilizer::Interface::Jira::Transformation.run(source_issue.data)
+        Agilizer::Interface::Jira::Transformations.run(source_issue.data)
       end
     end
   end
@@ -32,7 +32,7 @@ Benchmark.bm do |x|
         transformation_pool = Thread.pool(issues_count)
         source_issues.each do |source_issue|
           transformation_pool.process do
-            Agilizer::Interface::Jira::Transformation.run(source_issue.data)
+            Agilizer::Interface::Jira::Transformations.run(source_issue.data)
           end
         end
         transformation_pool.shutdown

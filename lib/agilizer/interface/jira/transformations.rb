@@ -6,7 +6,7 @@ module Agilizer
 
       # Functional module to transform data from JIRA issue
       # representation to Agilizer's.
-      module Transformation
+      module Transformations
 
         # Process the passed data (source) and returns the processed
         # one.
@@ -47,7 +47,7 @@ module Agilizer
           # We enforce sorting of the group indices since ordering
           # may be platform-dependent otherwise.
           groups = Hash[groups.sort]
-          
+
           groups.values.collect do |files|
             files.collect do |file|
               require file

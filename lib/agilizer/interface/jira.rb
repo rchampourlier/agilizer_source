@@ -10,7 +10,7 @@ module Agilizer
     #     Agilizer::Interface::Jira.import(project_key, client_options)
     #
     # To transform JIRA data for a single issue:
-    #     Agilizer::Interface::Jira::Transformation.run(data)
+    #     Agilizer::Interface::Jira::Transformations.run(data)
     module Jira
 
       # Performs a sync through `JiraCache.sync_project_issues` format

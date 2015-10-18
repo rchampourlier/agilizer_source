@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'agilizer/interface/jira/transformation'
+require 'agilizer/interface/jira/transformations'
 require 'agilizer/issue_analysis/statistics'
 
 describe Agilizer::IssueAnalysis::Statistics do

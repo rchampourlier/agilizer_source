@@ -1,4 +1,4 @@
-require 'agilizer/interface/jira/transformation'
+require 'agilizer/interface/jira/transformations'
 require 'agilizer/update_manager'
 
 module Agilizer
@@ -24,7 +24,7 @@ module Agilizer
         def on_fetched_issue(event_data)
           issue_key = event_data[:key]
           issue_data = event_data[:data]
-          transformed_data = Transformation.run(issue_data)
+          transformed_data = Transformations.run(issue_data)
           begin
             UpdateManager.run(transformed_data)
             logger.info "Updated issue #{issue_key}"

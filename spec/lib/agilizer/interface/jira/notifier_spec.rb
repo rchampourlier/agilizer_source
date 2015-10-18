@@ -19,15 +19,15 @@ describe Agilizer::Interface::Jira::Notifier do
     context 'event name is "fetched_issue"' do
       let(:event_name) { 'fetched_issue' }
 
-      it 'processes the issue data with Transformation::run(data)' do
-        expect(Agilizer::Interface::Jira::Transformation)
+      it 'processes the issue data with Transformations::run(data)' do
+        expect(Agilizer::Interface::Jira::Transformations)
           .to receive(:run)
           .with(issue_data)
         subject.publish(event_name, event_data)
       end
 
       it 'runs UpdateManager::run(processed_data)' do
-        allow(Agilizer::Interface::Jira::Transformation)
+        allow(Agilizer::Interface::Jira::Transformations)
           .to receive(:run)
           .with(issue_data)
           .and_return(processed_data)
