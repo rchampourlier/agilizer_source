@@ -40,7 +40,7 @@ module Agilizer
 
       #
       # Usage:
-      #   sum_sprint_data(
+      #   sprint_data(
       #     issues,
       #     sprint_name,
       #     'developer',
@@ -57,7 +57,7 @@ module Agilizer
       # }, ...]
       #
       # TODO 'now' value should not be calculated here
-      def sum_sprint_data(issues, sprint_name, issue_grouping_path, sprint_data_groups, value_path)
+      def sprint_data(issues, sprint_name, issue_grouping_path, sprint_data_groups, value_path)
         issues.each_with_object({}) do |issue, hash|
           sprint_data = issue.sprints.find { |sprint| sprint['name'] == sprint_name }
           next if sprint_data.nil?
@@ -80,7 +80,7 @@ module Agilizer
           hash[issue_grouping_value]['now'] += issue.attributes[value_path] || 0
         end.values
       end
-      module_function :sum_sprint_data
+      module_function :sprint_data
 
       # Example
       # ::timespent(issues, sprint_name, %w(author status))

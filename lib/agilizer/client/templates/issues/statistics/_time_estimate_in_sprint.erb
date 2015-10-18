@@ -1,7 +1,7 @@
 <h4>Time estimate in sprint</h4>
 
 <%
-  rows = Agilizer::IssueAnalysis::Statistics.sum_sprint_data(
+  rows = Agilizer::IssueAnalysis::Statistics.sprint_data(
     @issues,
     @sprint_name,
     'developer',

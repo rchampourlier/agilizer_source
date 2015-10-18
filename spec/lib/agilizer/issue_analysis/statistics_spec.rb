@@ -8,7 +8,7 @@ describe Agilizer::IssueAnalysis::Statistics do
     Agilizer::Issue.all.entries
   end
 
-  describe '::sum_sprint_data(issues, sprint_name, issue_grouping_path, sprint_data_groups, value_path)' do
+  describe '::sprint_data(issues, sprint_name, issue_grouping_path, sprint_data_groups, value_path)' do
 
     let(:spec_case_indices) { (11..12) }
     let(:sprint_name) { 'Sprint 2015-09-03' }
@@ -16,7 +16,7 @@ describe Agilizer::IssueAnalysis::Statistics do
     let(:sprint_data_groups) { %w(sprint_start sprint_end) }
     let(:value_path) { 'time_estimate' }
 
-    subject { described_class.sum_sprint_data(issues, sprint_name, issue_grouping_path, sprint_data_groups, value_path) }
+    subject { described_class.sprint_data(issues, sprint_name, issue_grouping_path, sprint_data_groups, value_path) }
 
     it 'returns the expected result' do
       expected_result = [
