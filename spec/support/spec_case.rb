@@ -3,6 +3,8 @@ require 'agilizer/interface/jira/notifier'
 # Loader for JIRA issue fixtures
 class SpecCase
 
+  # Read the spec cases fixture files for the specified indices
+  # and return an array of hashes representing the JIRA issues.
   def self.get_jira_issues(*indices)
     indices.map do |index|
       file = File.expand_path("spec/fixtures/jira_issues/case_#{index}.json")
@@ -10,8 +12,8 @@ class SpecCase
     end
   end
 
-  # Load the spec cases for the specified indices
-  # in the local database as `Agilizer::Issue` records.
+  # Load the spec cases for the specified indices and create the
+  # corresponding `Agilizer::Issue` records in the local database.
   def self.load_issues(*indices)
     jira_issues = get_jira_issues(*indices)
     jira_issues.each do |jira_issue|
