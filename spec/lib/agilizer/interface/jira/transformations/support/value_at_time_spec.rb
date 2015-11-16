@@ -22,7 +22,11 @@ describe Agilizer::Interface::Jira::Transformations::Support do
 
     context 'field is not authorized' do
       let(:field) { 'field' }
-      it 'raises an error'
+      it 'raises an error' do
+        expect do
+          described_class.value_at_time(processing_data, field, time)
+        end.to raise_error
+      end
     end
 
     context 'when there is no history' do
