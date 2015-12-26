@@ -1,6 +1,15 @@
 # TODO
 
-1. Board for sprint launch and realtime print status
+## Transform
+
+- [WIP] extract delay per status (e.g. spent 3 days in Open, 2 days in In Dev...)
+
+## Features
+
+- Asynchronous webhook to JobTomate with processed issue and changes.
+
+### Board
+-. For sprint launch and realtime sprint status
   - Filter issues on a sprint
   - Calculate assigned estimate per developer
 - Worklog reports (today, yesterday, current week, last week)
