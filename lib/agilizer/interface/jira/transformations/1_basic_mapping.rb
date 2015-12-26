@@ -51,7 +51,7 @@ module Agilizer
               'developer'              => { path: 'fields.customfield_10600.key' },
               'reviewer'               => { path: 'fields.customfield_10601.key' },
 
-              'fix_versions'  => {
+              'fix_versions' => {
                 path: 'fields.fixVersions',
                 type: :array,
                 item_mapping: {
