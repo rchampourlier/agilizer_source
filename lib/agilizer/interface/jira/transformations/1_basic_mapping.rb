@@ -38,6 +38,7 @@ module Agilizer
               'project_key'            => { path: 'fields.project.key' },
               'status'                 => { path: 'fields.status.name' },
               'resolved_at'            => { path: 'fields.resolutiondate' },
+              'priority'               => { path: 'fields.priority.name' },
               'summary'                => { path: 'fields.summary' },
               'description'            => { path: 'fields.description' },
               'type'                   => { path: 'fields.issuetype.name' },

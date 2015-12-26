@@ -44,6 +44,7 @@ module Agilizer
     field :description, type: String
     field :status, type: String
     field :type, type: String
+    field :priority, type: String
     field :labels, type: Array
     field :category, type: String
     field :fix_versions, type: Array
