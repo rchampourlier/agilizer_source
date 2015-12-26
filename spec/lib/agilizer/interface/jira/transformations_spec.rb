@@ -68,7 +68,8 @@ describe Agilizer::Interface::Jira::Transformations do
           Agilizer::Interface::Jira::Transformations::AddSprintInformation,
           Agilizer::Interface::Jira::Transformations::AddSprintNameToWorklogs,
           Agilizer::Interface::Jira::Transformations::AddStatusToWorklogs,
-          Agilizer::Interface::Jira::Transformations::CalculateStatusesStatistics
+          Agilizer::Interface::Jira::Transformations::CalculateStatusesStatistics,
+          Agilizer::Interface::Jira::Transformations::CalculateTimePerStatus
         ]
       ])
     end

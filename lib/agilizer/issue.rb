@@ -55,6 +55,7 @@ module Agilizer
     field :history, type: Array
     field :final_fix_version, type: String
     field :statuses_statistics, type: Hash
+    field :time_per_status, type: Hash
     field :github_pull_requests, type: Array
     field :changed_files, type: Array
 
