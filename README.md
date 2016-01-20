@@ -64,9 +64,17 @@ bin/console
 
 ## Getting started
 
-To reprocess all cached issues:
+### Reprocess all issues cached in JiraCache store
 
 ```
+bin/process_cache
+```
+
+### Cleanup Agilizer issues and get a fresh update from JiraCache store
+
+```
+bin/clear_agilizer
+bin/sync
 bin/process_cache
 ```
 

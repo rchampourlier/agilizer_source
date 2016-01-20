@@ -22,5 +22,10 @@ Agilizer::Interface::Jira.import_project(ENV['AGILIZER_JIRA_PROJECT_KEY'],
   domain: ENV['AGILIZER_JIRA_DOMAIN'],
   username: ENV['AGILIZER_JIRA_USERNAME'],
   password: ENV['AGILIZER_JIRA_PASSWORD'],
-  logger: logger
-)
+  logger: logger)
+
+# Cleanup issues deleted from JIRA
+require 'jira_cache/issue'
+deleted_issue_keys = JiraCache::Issue.where(:deleted_from_jira_at => { :$ne => nil }).map(&:key)
+Agilizer::Issue.where(:identifier => { :$in => deleted_issue_keys }).destroy_all
+logger.info "Deleted Agilizer::Issue for identifiers #{deleted_issue_keys}"

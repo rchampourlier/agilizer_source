@@ -1,4 +1,9 @@
 #!/usr/bin/env ruby
+#
+# Usage
+# =====
+# bin/build_spec_case ISSUE_KEY [FIXTURE-ID]
+#
 
 # Load dependencies
 require 'rubygems'
