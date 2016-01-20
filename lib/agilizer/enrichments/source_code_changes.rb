@@ -44,10 +44,6 @@ module Agilizer
 
         merge_commit_data = fetch_github_commit(pull_request, sha)
         merge_commit_data['files'].map { |f| f['filename'] }
-
-      rescue RestClient::ResourceNotFound => error
-        # TODO
-        require 'pry'; binding.pry
       end
       module_function :fetch_changed_files
 
@@ -63,6 +59,9 @@ module Agilizer
         url = "https://api.github.com/repos/#{owner}/#{repo}/pulls/#{id}"
         response = github_request(url).execute
         JSON.parse(response.to_str)
+      rescue RestClient::ResourceNotFound => _error
+        # TODO: log something, in case it's raised
+        return nil
       end
       module_function :fetch_github_pull_request
 
