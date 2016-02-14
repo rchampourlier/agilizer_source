@@ -7,7 +7,7 @@
 # Uses the `Agilizer::Enrichments::SourceCodeChange` module.
 #
 # Usage:
-#   bin/enrich_with_source_code_changes
+#   bin/apply_enrichments
 
 # Load dependencies
 require 'rubygems'
