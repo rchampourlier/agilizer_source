@@ -2,7 +2,7 @@
 #
 # Usage
 # =====
-# bin/build_spec_case ISSUE_KEY [FIXTURE-ID]
+# script/build_spec_case ISSUE_KEY [FIXTURE-ID]
 #
 
 # Load dependencies

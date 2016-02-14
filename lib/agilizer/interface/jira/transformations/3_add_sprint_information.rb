@@ -14,8 +14,8 @@ module Agilizer
           def run(_source_data, processing_data)
             sprints = processing_data['sprints']
             enriched_sprints = sprints.map do |sprint|
-              sprint_information = sprint_information(processing_data, sprint)
-              sprint.merge sprint_information
+              info = sprint_information(processing_data, sprint)
+              sprint.merge info
             end
             processing_data.merge 'sprints' => enriched_sprints
           end
