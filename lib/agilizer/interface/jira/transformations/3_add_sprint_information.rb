@@ -14,8 +14,7 @@ module Agilizer
           def run(_source_data, processing_data)
             sprints = processing_data['sprints']
             enriched_sprints = sprints.map do |sprint|
-              sprint_name = sprint['name']
-              sprint_information = sprint_information(processing_data, sprint_name)
+              sprint_information = sprint_information(processing_data, sprint)
               sprint.merge sprint_information
             end
             processing_data.merge 'sprints' => enriched_sprints
@@ -53,9 +52,14 @@ module Agilizer
           #     - 'time_original_estimate': [Numeric]
           #     - 'status': [String]
           #
+          # @params sprint [Hash]
+          #   Hash of the sprint base information: name, started_at,
+          #   closed_at, state.
+          #   May be retrieved from the issue's "sprints" field.
           # @return [Hash]
           #
-          def sprint_information(data, sprint_name)
+          def sprint_information(data, sprint)
+            sprint_name = sprint['name']
             sprint_histories = sprint_related_histories(data, sprint_name)
 
             # sprint_histories contains all histories related to the
@@ -80,8 +84,6 @@ module Agilizer
               else sprint_histories.first
               end
             )
-
-            sprint = data['sprints'].find { |s| s['name'] == sprint_name }
 
             sprint_start = sprint ? sprint['started_at'] : nil
             addition_time = (
