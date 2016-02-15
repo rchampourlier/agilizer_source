@@ -24,8 +24,15 @@ logger.level = Logger::DEBUG
 
 require 'agilizer/issue'
 require 'agilizer/enrichments/source_code_changes'
+require 'agilizer/enrichments/sprints_from_history'
+
+sprints_info = Agilizer::Enrichments::SprintsFromHistory.build_sprints_info
 
 Agilizer::Issue.each do |issue|
-  Agilizer::Enrichments::SourceCodeChanges.run(issue.identifier)
-  logger.info "Processed issue #{issue.identifier}"
+  logger.info "Processing issue #{issue.identifier}"
+  # Agilizer::Enrichments::SourceCodeChanges.run(issue.identifier)
+
+  Agilizer::Enrichments::SprintsFromHistory.run(
+    issue.identifier,
+    sprints_info)
 end
