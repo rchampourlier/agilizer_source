@@ -50,6 +50,8 @@ module Agilizer
     field :fix_versions, type: Array
     field :sprints, type: Array
     field :worklogs, type: Array
+    field :bug_cause, type: String
+    field :maintenance_type, type: String
 
     # Enrichments
     field :history, type: Array

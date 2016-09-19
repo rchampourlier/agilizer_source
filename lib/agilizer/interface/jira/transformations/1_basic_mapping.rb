@@ -50,6 +50,8 @@ module Agilizer
               'assignee'               => { path: 'fields.assignee.name' },
               'developer'              => { path: 'fields.customfield_10600.key' },
               'reviewer'               => { path: 'fields.customfield_10601.key' },
+              'bug_cause'              => { path: 'fields.customfield_11101.value' },
+              'maintenance_type'       => { path: 'fields.customfield_11100.value' },
 
               'fix_versions' => {
                 path: 'fields.fixVersions',
