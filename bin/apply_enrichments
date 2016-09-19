@@ -30,7 +30,7 @@ sprints_info = Agilizer::Enrichments::SprintsFromHistory.build_sprints_info
 
 Agilizer::Issue.each do |issue|
   logger.info "Processing issue #{issue.identifier}"
-  # Agilizer::Enrichments::SourceCodeChanges.run(issue.identifier)
+  Agilizer::Enrichments::SourceCodeChanges.run(issue.identifier)
 
   Agilizer::Enrichments::SprintsFromHistory.run(
     issue.identifier,
