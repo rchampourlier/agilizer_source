@@ -1,6 +1,7 @@
 *.DS_Store
 /.bundle
 /.env
+/.env.production
 /coverage
 /out
 /script/build_all_spec_cases
