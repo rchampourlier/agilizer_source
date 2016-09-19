@@ -1,7 +1,7 @@
 base: &default
   clients:
     default:
-      uri: <%= ENV['AGILIZER_MONGODB_URI'] %>
+      uri: <%= ENV['MONGODB_URI'] %>
 
 production:
   <<: *default
@@ -12,5 +12,5 @@ development:
 test:
   clients:
     default:
-      uri: <%= ENV['AGILIZER_MONGODB_URI'] %>_test
+      uri: <%= ENV['MONGODB_URI'] %>_test
       safe: true

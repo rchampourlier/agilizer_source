@@ -2,8 +2,8 @@
 require 'rubygems'
 require 'bundler/setup'
 
-ENV['AGILIZER_ENV'] = 'development' if ENV['AGILIZER_ENV'].nil?
-env = ENV['AGILIZER_ENV']
+ENV['APP_ENV'] = 'development' if ENV['APP_ENV'].nil?
+env = ENV['APP_ENV']
 if env == 'development' || env == 'test'
   require 'dotenv'
   Dotenv.load

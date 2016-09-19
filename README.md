@@ -44,18 +44,7 @@ Get an alert when an issue:
 
 ## Prerequisites
 
-Create a `.env` file to setup required environment variables, for example:
-
-```
-AGILIZER_ENV=development
-AGILIZER_MONGODB_URI=mongodb://127.0.0.1:27017/agilizer
-AGILIZER_JIRA_DOMAIN=domain.atlassian.net
-AGILIZER_JIRA_USERNAME=username
-AGILIZER_JIRA_PASSWORD=password
-AGILIZER_JIRA_LOG_LEVEL=DEBUG
-```
-
-Once this is good, you should be able to play with:
+Create a `.env` file to setup required environment variables (see .env.example). Once this is done, you should be able to play with:
 
 ```
 bundle install
@@ -84,9 +73,9 @@ bin/process_cache
 
 ```
 jira_client_options = {
-  domain: ENV['AGILIZER_JIRA_DOMAIN'],
-  username: ENV['AGILIZER_JIRA_USERNAME'],
-  password: ENV['AGILIZER_JIRA_PASSWORD'],
+  domain: ENV['JIRA_DOMAIN'],
+  username: ENV['JIRA_USERNAME'],
+  password: ENV['JIRA_PASSWORD'],
   logger: Logger.new(STDOUT)
 }
 Agilizer::Interface::Jira.import_issue(issue_key, jira_client_options)

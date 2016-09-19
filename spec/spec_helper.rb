@@ -2,7 +2,7 @@
 require 'rubygems'
 require 'bundler/setup'
 
-ENV['AGILIZER_ENV'] = 'test'
+ENV['APP_ENV'] = 'test'
 
 if ENV['CI']
   # Running on CI, setup Coveralls

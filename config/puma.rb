@@ -6,4 +6,4 @@ preload_app!
 
 rackup DefaultRackup
 port ENV['PORT'] || 3000
-environment ENV['AGILIZER_ENV'] || 'development'
+environment ENV['APP_ENV'] || 'development'
