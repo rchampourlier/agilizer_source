@@ -39,7 +39,7 @@ module Agilizer
           sprint.merge sprint_information
         end
 
-        issue.sprints = processing_data['sprints'] + enriched_sprints
+        issue.sprints = (processing_data['sprints'] + enriched_sprints).compact
         issue.save!
         issue
       end
