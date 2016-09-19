@@ -22,7 +22,7 @@ describe Agilizer::Interface::Jira::Transformations::CalculateStatusesStatistics
         'development_started_at' => Time.parse('2014-07-30 15:58:55.352000000 +0200'),
         'review_started_at' => Time.parse('2014-08-29 15:15:03.827000000 +0200'),
         'functional_review_started_at' => Time.parse('2014-09-10 17:30:31.954000000 +0200'),
-        'released_at' => Time.parse('2014-10-24 14:29:23.810000000 +020'),
+        'released_at' => Time.parse('2014-10-24 14:29:23.810000000 +0200'),
         'closed_at' => nil,
         'returns_from_review' => 6,
         'returns_from_functional_review' => 1
