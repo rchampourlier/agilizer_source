@@ -6,6 +6,9 @@ module Agilizer
     # Enrich issue with source code change data retrieved from
     # the Github pull request URLs contained in the issue
     # "github_pull_requests" attribute.
+    #
+    # TODO: scope the pull request fetching to issues that have
+    #   been modified and may have new source code changes.
     module SourceCodeChanges
 
       # @param issue_identifier [String] the identifier of the issue

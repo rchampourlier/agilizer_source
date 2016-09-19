@@ -1,9 +1,10 @@
 #!/usr/bin/env ruby
 
-# Clear cache and performs a full sync.
+# Clear Agilizer's issues (not JiraCache's) and performs a full sync
+# from JiraCache's data.
 #
 # Usage:
-#     bin/rebuild
+#     bin/clear_agilizer
 
 # Load dependencies
 require 'rubygems'
