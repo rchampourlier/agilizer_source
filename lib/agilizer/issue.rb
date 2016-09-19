@@ -1,5 +1,4 @@
 require 'mongoid'
-require 'agilizer/issue_filter'
 
 module Agilizer
 
@@ -60,7 +59,5 @@ module Agilizer
     field :time_per_status, type: Hash
     field :github_pull_requests, type: Array
     field :changed_files, type: Array
-
-    extend IssueFilter
   end
 end
