@@ -1,46 +1,18 @@
-# Agilizer
+# Agilizer Fetch & Process
 
 [![Build Status](https://travis-ci.org/rchampourlier/agilizer.svg)](https://travis-ci.org/rchampourlier/agilizer)
 [![Coverage Status](https://coveralls.io/repos/rchampourlier/agilizer/badge.svg?branch=master&service=github)](https://coveralls.io/github/rchampourlier/agilizer?branch=master)
 [![Code Climate](https://codeclimate.com/github/rchampourlier/agilizer/badges/gpa.svg)](https://codeclimate.com/github/rchampourlier/agilizer)
 
-Easy access to useful statistics for Agile teams. It is intended to work
-with several project management solutions, but currently only JIRA is
-supported.
+## Agilizer
 
-## Use Cases
+This is a component of the Agilizer suite. The Agilizer suite is intended on providing useful information and data for data-driven agile teams. It is intended to be usable with different project management solutions, though only JIRA integration has been implemented yet.
 
-- List issues added to current sprint
-- Detect workflow anomalies
-  * Missing pull request in comment on an issue going for Review
-- Detect staled issues
-- Detect missing worklogs
-- Calculate time added to current sprint
-- Track issues picking order
-- List changes on a specific day
-- List worklogs for today
-- Analyze worklogs per team member
-- Detect issues with remaining estimate + timespent greater than original estimate
-- Detect issues with remaining estimate increasing
+## Fetch & Process
 
-_...and more!_
+This part is intended on fetching data from a project management solution and process them to enable using them with the other components of the suite (e.g. the UI).
 
-### Statistics
-
-Get useful statistics about your project by looking at
-your JIRA issues (with automation, like any good-and-lazy
-developer!).
-
-- Average time per status
-- Average time per estimation point per status
-- Average logged work per estimation point
-
-### Alerts
-
-Get an alert when an issue:
-- is moving without work logged,
-- is still in review after 1 week,
-- ...
+Internally, this component is relying on the [jira-cache gem](https://github.com/rchampourlier/jira_cache) which helps with storing JIRA data locally, instead of relying on longer API calls.
 
 ## Prerequisites
 
