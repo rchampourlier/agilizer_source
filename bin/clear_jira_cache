@@ -6,13 +6,11 @@
 #     bin/rebuild
 
 # Load dependencies
-require 'rubygems'
-require 'bundler/setup'
+require "rubygems"
+require "bundler/setup"
 
-$LOAD_PATH.unshift File.expand_path('../..', __FILE__)
-require 'config/boot'
+$LOAD_PATH.unshift File.expand_path("../..", __FILE__)
+require "config/boot"
 
-require 'jira_cache/issue'
-require 'jira_cache/project_state'
-JiraCache::Issue.destroy_all
-JiraCache::ProjectState.destroy_all
+require "jira_cache/data/issue_repository"
+JiraCache::IssueRepository.delete_where("TRUE")

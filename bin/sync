@@ -1,31 +1,30 @@
 #!/usr/bin/env ruby
 
 # Fetches new and updated issues from the sources,
-# processes them and saves them as `Agilizer::Issue`
-# records.
+# processes them and saves them as Issue records.
 #
 # Usage:
 #     bin/sync
 
 # Load dependencies
-require 'rubygems'
-require 'bundler/setup'
+require "rubygems"
+require "bundler/setup"
 
-$LOAD_PATH.unshift File.expand_path('../..', __FILE__)
-require 'config/boot'
+$LOAD_PATH.unshift File.expand_path("../..", __FILE__)
+require "config/boot"
 
 logger = Logger.new(STDOUT)
-logger.level = Logger.const_get(ENV['JIRA_LOG_LEVEL'].to_sym)
+logger.level = Logger.const_get(ENV["JIRA_LOG_LEVEL"].to_sym)
 
-require 'agilizer/interface/jira'
-Agilizer::Interface::Jira.import_project(ENV['JIRA_PROJECT_KEY'],
-  domain: ENV['JIRA_DOMAIN'],
-  username: ENV['JIRA_USERNAME'],
-  password: ENV['JIRA_PASSWORD'],
+require "agilizer/interface/jira"
+Agilizer::Interface::Jira.import_project(ENV["JIRA_PROJECT_KEY"],
+  domain: ENV["JIRA_DOMAIN"],
+  username: ENV["JIRA_USERNAME"],
+  password: ENV["JIRA_PASSWORD"],
   logger: logger)
 
 # Cleanup issues deleted from JIRA
-require 'jira_cache/issue'
-deleted_issue_keys = JiraCache::Issue.where(:deleted_from_jira_at => { :$ne => nil }).map(&:key)
-Agilizer::Issue.where(:identifier => { :$in => deleted_issue_keys }).destroy_all
-logger.info "Deleted Agilizer::Issue for identifiers #{deleted_issue_keys}"
+require "jira_cache/issue_repository"
+deleted_issue_keys = JiraCache::Data::IssueRepository.keys_for_deleted_issues
+Agilizer::Data::IssueRepository.delete_where(identifier: deleted_issue_keys)
+logger.info "Deleted issues for the following identifiers: #{deleted_issue_keys}"

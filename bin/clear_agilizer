@@ -1,17 +1,17 @@
 #!/usr/bin/env ruby
 
-# Clear Agilizer's issues (not JiraCache's) and performs a full sync
-# from JiraCache's data.
+# Clear Agilizer"s issues (not JiraCache"s) and performs a full sync
+# from JiraCache"s data.
 #
 # Usage:
 #     bin/clear_agilizer
 
 # Load dependencies
-require 'rubygems'
-require 'bundler/setup'
+require "rubygems"
+require "bundler/setup"
 
-$LOAD_PATH.unshift File.expand_path('../..', __FILE__)
-require 'config/boot'
+$LOAD_PATH.unshift File.expand_path("../..", __FILE__)
+require "config/boot"
 
-require 'agilizer/issue'
-Agilizer::Issue.destroy_all
+require "agilizer/data/issue_repository"
+Agilizer::Data::IssueRepository.delete_where(true)

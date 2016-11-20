@@ -3,6 +3,7 @@ ENV['RACK_ENV'] ||= ENV['APP_ENV'] ||= 'development'
 root_dir = File.dirname(__FILE__)
 require File.join(root_dir, 'config', 'boot')
 
+require "logger"
 logger = Logger.new(STDOUT)
 logger.level = Logger.const_get(ENV['JIRA_LOG_LEVEL'].to_sym)
 

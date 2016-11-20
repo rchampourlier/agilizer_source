@@ -1,40 +1,45 @@
+# frozen_string_literal: true
+
 # Load dependencies
-require 'rubygems'
-require 'bundler/setup'
+require "rubygems"
+require "bundler/setup"
+require "pry"
 
-ENV['APP_ENV'] = 'test'
+ENV["APP_ENV"] = "test"
 
-if ENV['CI']
-  # Running on CI, setup Coveralls
-  require 'coveralls'
-  Coveralls.wear!
-else
-  # Running locally, setup simplecov
-  require 'simplecov'
-  require 'simplecov-json'
-  SimpleCov.start do
-    add_filter do |src|
-      # Ignoring files from the spec directory
-      src.filename =~ %r{/spec/}
-    end
+# Simplecov setup
+require "simplecov"
+SimpleCov.start do
+  add_filter do |src|
+    # Ignoring files from the spec directory
+    src.filename =~ %r{/spec/}
   end
-  SimpleCov.formatter = SimpleCov::Formatter::JSONFormatter
 end
 
-$LOAD_PATH.unshift File.expand_path('../..', __FILE__) # root
-$LOAD_PATH.unshift File.expand_path('../../spec', __FILE__)
-require 'config/boot'
+$LOAD_PATH.unshift File.expand_path("../..", __FILE__) # root
+$LOAD_PATH.unshift File.expand_path("../../spec", __FILE__)
+require "config/boot"
 
-require 'spec/support/spec_case'
+require "spec/support/spec_case"
 
-# Cleaning database after each test
-require 'agilizer/issue'
-require 'jira_cache/issue'
-require 'jira_cache/project_state'
+# Database setup, teardown and cleanup during tests
+require "sequel/extensions/migration"
+require "agilizer/data"
+require "jira_cache/data/issue_repository"
+client = Agilizer::Data::DB
+
+MIGRATIONS_DIR = File.expand_path("../../config/db_migrations", __FILE__)
 RSpec.configure do |config|
+
+  config.before(:all) do
+    Sequel::Migrator.apply(client, MIGRATIONS_DIR)
+  end
+
   config.after(:each) do
-    JiraCache::Issue.destroy_all
-    JiraCache::ProjectState.destroy_all
-    Agilizer::Issue.destroy_all
+    Agilizer::Data::IssueRepository.delete_where(true)
+  end
+
+  config.after(:all) do
+    Sequel::Migrator.apply(client, MIGRATIONS_DIR, 0)
   end
 end

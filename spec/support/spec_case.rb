@@ -13,7 +13,7 @@ class SpecCase
   end
 
   # Load the spec cases for the specified indices and create the
-  # corresponding `Agilizer::Issue` records in the local database.
+  # corresponding `Agilizer::Data::IssueRepository` records in the local database.
   def self.load_issues(*indices)
     jira_issues = get_jira_issues(*indices)
     jira_issues.each do |jira_issue|
