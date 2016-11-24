@@ -86,7 +86,7 @@ module Agilizer
         username = ENV['GITHUB_API_USERNAME']
         password = ENV['GITHUB_API_PASSWORD']
         auth_token = "#{username}:#{password}"
-        "Basic #{Base64.encode64(auth_token).strip}"
+        "Basic #{Base64.strict_encode64(auth_token).strip}"
       end
       module_function :github_request_auth_header
     end
