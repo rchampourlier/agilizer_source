@@ -72,8 +72,11 @@ module Agilizer
       end
 
       def client
-        notifier = notifier(logger: logger)
-        JiraCache::Client.new(jira_config.merge(notifier: notifier))
+        client_config = jira_config.merge(
+          notifier: notifier,
+          logger: logger
+        )
+        JiraCache::Client.new(client_config)
       end
 
       def notifier

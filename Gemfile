@@ -53,7 +53,6 @@ end
 
 group :test do
   gem "rack-test"
-  gem "coveralls", require: false
   gem "simplecov", require: false
   gem "timecop", require: false
   gem "codeclimate-test-reporter", "~> 1.0.0"
