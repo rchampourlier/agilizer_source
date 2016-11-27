@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 require "rest-client"
 require "base64"
+require "agilizer/data/issue_repository"
 
 module Agilizer
   module Enrichments
@@ -13,13 +14,23 @@ module Agilizer
     #   been modified and may have new source code changes.
     module SourceCodeChanges
 
+      def run_for_applicable_issues
+        issues = Data::IssueRepository.all_with_github_pull_requests
+        issues.each do |hash|
+          identifier = hash[:identifier]
+          run(identifier)
+        end
+      end
+      module_function :run_for_applicable_issues
+
       # @param issue_identifier [String] the identifier of the issue
       #   to perform the enrichment on
       def run(issue_identifier)
         data = Data::IssueRepository.find_by(identifier: issue_identifier)
         return if data.nil?
 
-        changed_files = data["github_pull_requests"].map do |pull_request|
+        github_pull_requests = data["github_pull_requests"]
+        changed_files = github_pull_requests.map do |pull_request|
           fetch_changed_files(pull_request)
         end.flatten.uniq.compact
         return data if data["changed_files"] == changed_files

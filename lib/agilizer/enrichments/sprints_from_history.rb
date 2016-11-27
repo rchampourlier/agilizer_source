@@ -23,6 +23,12 @@ module Agilizer
     module SprintsFromHistory
       TRANSFORMATION = Interface::JIRA::Transformations::AddSprintInformation
 
+      def run_for_applicable_issues
+        identifiers = Data::IssueRepository.table.select(:identifier).map(&:values).flatten
+        identifiers.map { |identifier| run(identifier) }
+      end
+      module_function :run_for_applicable_issues
+
       def run(issue_identifier, sprints_info = nil)
         data = Data::IssueRepository.find_by(identifier: issue_identifier)
         return if data.nil?
