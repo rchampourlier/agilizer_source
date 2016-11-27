@@ -5,5 +5,7 @@
 #   - monitoring and alerting,
 #   - etc.
 module Agilizer
-  VERSION = '0.0.1'
+  VERSION = "0.0.1"
+
+  Error = Class.new(StandardError)
 end

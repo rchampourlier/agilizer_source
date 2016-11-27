@@ -1,5 +1,3 @@
-require 'active_support/all'
-
 module Agilizer
   module Interface
     module Jira

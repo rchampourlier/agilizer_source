@@ -1,4 +1,5 @@
-require 'agilizer/interface/jira/notifier'
+# frozen_string_literal: true
+require "agilizer/interface/jira/notifier"
 
 # Loader for JIRA issue fixtures
 class SpecCase
@@ -13,15 +14,15 @@ class SpecCase
   end
 
   # Load the spec cases for the specified indices and create the
-  # corresponding `Agilizer::Data::IssueRepository` records in the local database.
+  # corresponding "Issue" records in the local database.
   def self.load_issues(*indices)
     jira_issues = get_jira_issues(*indices)
     jira_issues.each do |jira_issue|
       event = {
-        key: jira_issue['key'],
+        key: jira_issue["key"],
         data: jira_issue
       }
-      logger = ::Logger.new(File.open('/dev/null', 'w'))
+      logger = ::Logger.new(File.open("/dev/null", "w"))
       notifier = Agilizer::Interface::Jira::Notifier.new(logger: logger)
       notifier.publish :fetched_issue, event
     end

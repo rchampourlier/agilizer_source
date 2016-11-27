@@ -17,7 +17,7 @@ module Agilizer
 
           def run(_source_data, processing_data)
             worklogs = processing_data['worklogs']
-            return processing_data if worklogs.blank?
+            return processing_data if worklogs.nil? || worklogs.empty?
 
             enriched_worklogs = worklogs.map do |worklog|
               time = worklog['time']

@@ -23,10 +23,13 @@ require "config/boot"
 require "spec/support/spec_case"
 
 # Database setup, teardown and cleanup during tests
-require "sequel/extensions/migration"
 require "agilizer/data"
 require "jira_cache/data/issue_repository"
+require "agilizer/data/issue_repository"
 client = Agilizer::Data::DB
+
+require "sequel"
+Sequel.extension :migration, :core_extensions
 
 MIGRATIONS_DIR = File.expand_path("../../config/db_migrations", __FILE__)
 RSpec.configure do |config|

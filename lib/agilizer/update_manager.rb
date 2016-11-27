@@ -1,4 +1,4 @@
-require 'agilizer/issue'
+# frozen_string_literal: true
 
 module Agilizer
 
@@ -8,36 +8,22 @@ module Agilizer
   # and then use `UpdateManager.run(data)`.
   #
   # The UpdateManager will then persist the issue data as appropriate
-  # (in a new issue, or update the existing one), and notify possible
-  # subscribers of the update.
-  module UpdateManager
+  # (in a new issue, or update the existing one).
+  class UpdateManager
+    class << self
 
-    def run(data)
-      issue = find_issue(data) || new_issue
-      issue.attributes = data
-      issue.save
-    end
-    module_function :run
-
-    # Returns the issue for the specified data, based on the data
-    # identifier and source values.
-    # Fails if several issues are found matching these criteria.
-    def find_issue(data)
-      issues = Issue.where(
-        identifier: data['identifier'],
-        source: data['source']
-      )
-      if issues.count > 1
-        fail "Found multiple issues for identifier \"#{data['identifier']}\" and source \"#{data['source']}\""
+      def run(data)
+        if find_issue(data)
+          identifier = data[:identifier]
+          Data::IssueRepository.update_where({ identifier: identifier }, data)
+        else
+          Data::IssueRepository.insert(data)
+        end
       end
-      return nil if issues.count == 0
-      issues.first
-    end
-    module_function :find_issue
 
-    def new_issue
-      Issue.new
+      def find_issue(data)
+        Data::IssueRepository.find_by(identifier: data[:identifier])
+      end
     end
-    module_function :new_issue
   end
 end

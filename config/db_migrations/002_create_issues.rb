@@ -34,17 +34,22 @@ Sequel.migration do
       String :status
       String :type
       String :priority
-      column :labels, 'text[]'
       String :category
-      column :fix_versions, 'text[]'
       String :bug_cause
       String :maintenance_type
 
+      column :changed_files, "text[]"
+      column :labels, "text[]"
+      column :fix_versions, "json"
+      column :history, "json"
+      column :sprints, "json"
+      column :statuses_statistics, "json"
+      column :time_per_status, "json"
+      column :worklogs, "json"
+
       # Enrichments
-      Array :history
-      String :final_fix_version
-      Array :github_pull_requests
-      Array :changed_files
+      column :final_fix_version, "json"
+      column :github_pull_requests, "json"
 
       # Timestamps
       DateTime :local_created_at

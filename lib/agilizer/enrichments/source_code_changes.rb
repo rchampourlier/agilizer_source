@@ -1,4 +1,6 @@
-require 'rest-client'
+# frozen_string_literal: true
+require "rest-client"
+require "base64"
 
 module Agilizer
   module Enrichments
@@ -14,17 +16,17 @@ module Agilizer
       # @param issue_identifier [String] the identifier of the issue
       #   to perform the enrichment on
       def run(issue_identifier)
-        issue = Issue.where(identifier: issue_identifier).first
-        return if issue.nil?
+        data = Data::IssueRepository.find_by(identifier: issue_identifier)
+        return if data.nil?
 
-        changed_files = issue.github_pull_requests.map do |pull_request|
+        changed_files = data["github_pull_requests"].map do |pull_request|
           fetch_changed_files(pull_request)
         end.flatten.uniq.compact
-        return issue if issue.changed_files == changed_files
+        return data if data["changed_files"] == changed_files
 
-        issue.changed_files = changed_files
-        issue.save!
-        issue
+        data["changed_files"] = changed_files
+        Data::IssueRepository.insert(data)
+        data
       end
       module_function :run
 
@@ -34,18 +36,18 @@ module Agilizer
       #   containing :owner, :repo and :id attributes
       def fetch_changed_files(pull_request)
         pr_data = fetch_pr_data(pull_request)
-        sha = pr_data['merge_commit_sha']
+        sha = pr_data["merge_commit_sha"]
         return nil if sha.nil?
 
         merge_commit_data = fetch_github_commit(pull_request, sha)
-        merge_commit_data['files'].map { |f| f['filename'] }
+        merge_commit_data["files"].map { |f| f["filename"] }
       end
       module_function :fetch_changed_files
 
       def fetch_pr_data(pull_request)
-        owner = pull_request[:owner]
-        repo = pull_request[:repo]
-        id = pull_request[:id]
+        owner = pull_request["owner"]
+        repo = pull_request["repo"]
+        id = pull_request["id"]
         fetch_github_pull_request(owner, repo, id)
       end
       module_function :fetch_pr_data
@@ -55,14 +57,14 @@ module Agilizer
         response = github_request(url).execute
         JSON.parse(response.to_str)
       rescue RestClient::ResourceNotFound => _error
-        # TODO: log something, in case it's raised
+        # TODO: log something, in case it"s raised
         return nil
       end
       module_function :fetch_github_pull_request
 
       def fetch_github_commit(pull_request, sha)
-        owner = pull_request[:owner]
-        repo = pull_request[:repo]
+        owner = pull_request["owner"]
+        repo = pull_request["repo"]
         url = "https://api.github.com/repos/#{owner}/#{repo}/commits/#{sha}"
         response = github_request(url).execute
         JSON.parse(response.to_str)
@@ -83,8 +85,8 @@ module Agilizer
       module_function :github_request
 
       def github_request_auth_header
-        username = ENV['GITHUB_API_USERNAME']
-        password = ENV['GITHUB_API_PASSWORD']
+        username = ENV["GITHUB_API_USERNAME"]
+        password = ENV["GITHUB_API_PASSWORD"]
         auth_token = "#{username}:#{password}"
         "Basic #{Base64.strict_encode64(auth_token).strip}"
       end

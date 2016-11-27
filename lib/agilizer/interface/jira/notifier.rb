@@ -1,5 +1,5 @@
-require 'agilizer/interface/jira/transformations'
-require 'agilizer/update_manager'
+require "agilizer/interface/jira/transformations"
+require "agilizer/update_manager"
 
 module Agilizer
   module Interface
@@ -25,13 +25,8 @@ module Agilizer
           issue_key = event_data[:key]
           issue_data = event_data[:data]
           transformed_data = Transformations.run(issue_data)
-          begin
-            UpdateManager.run(transformed_data)
-            logger.info "Updated issue #{issue_key}"
-          rescue => e
-            logger.error "Failed to write transformed data for #{issue_key} (#{e})"
-            logger.error e.send(:caller)
-          end
+          UpdateManager.run(transformed_data)
+          logger.info "Updated issue #{issue_key}"
         end
 
         def logger
