@@ -1,15 +1,15 @@
 #!/usr/bin/env ruby
 
 # Load dependencies
-require 'rubygems'
-require 'bundler/setup'
+require "rubygems"
+require "bundler/setup"
 
-root_dir = File.expand_path('../..', __FILE__)
+root_dir = File.expand_path("../..", __FILE__)
 $LOAD_PATH.unshift(root_dir)
-require 'config/boot'
+require "config/boot"
 
-require 'agilizer'
-require 'agilizer/issue'
+require "agilizer"
+require "agilizer/data/issue_repository"
 
-require 'pry'
+require "pry"
 Pry.start
