@@ -35,6 +35,8 @@ GEM
       ice_nine (~> 0.11.0)
       thread_safe (~> 0.3, >= 0.3.1)
     builder (3.2.2)
+    codeclimate-test-reporter (1.0.3)
+      simplecov
     coderay (1.1.1)
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
@@ -168,9 +170,6 @@ GEM
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.0)
-    simplecov-json (0.2)
-      json
-      simplecov
     sinatra (1.4.7)
       rack (~> 1.5)
       rack-protection (~> 1.4)
@@ -204,6 +203,7 @@ PLATFORMS
 
 DEPENDENCIES
   awesome_print
+  codeclimate-test-reporter (~> 1.0.0)
   coveralls
   dotenv
   faker
@@ -226,7 +226,6 @@ DEPENDENCIES
   sequel
   sequel_pg
   simplecov
-  simplecov-json
   sinatra
   terminal-notifier-guard
   thread

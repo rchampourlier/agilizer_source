@@ -1,10 +1,15 @@
 language: ruby
 rvm:
-  - 2.2.3
-before_install: gem install bundler -v 1.10.3
+  - 2.3.1
 services:
-  - mongodb
+  - postgresql
+addons:
+  postgresql: "9.4"
+before_install: gem install bundler -v 1.13.6
+before_script:
+  - psql -c 'create database travis_ci_test;' -U postgres
+after_success: bundle exec codeclimate-test-reporter
 env:
   global:
     - APP_ENV=test
-    - MONGODB_URI=mongodb://127.0.0.1:27017/agilizer
+    - DATABASE_URL=postgres://localhost:5432/travis_ci_test

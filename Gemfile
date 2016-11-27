@@ -55,6 +55,6 @@ group :test do
   gem "rack-test"
   gem "coveralls", require: false
   gem "simplecov", require: false
-  gem "simplecov-json", require: false
   gem "timecop", require: false
+  gem "codeclimate-test-reporter", "~> 1.0.0"
 end
