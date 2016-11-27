@@ -22,7 +22,7 @@ jira_interface = Agilizer::Interface::JIRA.new(logger: logger)
 jira_interface.import_project(ENV["JIRA_PROJECT_KEY"])
 
 # Cleanup issues deleted from JIRA
-require "jira_cache/issue_repository"
+require "jira_cache/data/issue_repository"
 deleted_issue_keys = JiraCache::Data::IssueRepository.keys_for_deleted_issues
 Agilizer::Data::IssueRepository.delete_where(identifier: deleted_issue_keys)
 logger.info "Deleted issues for the following identifiers: #{deleted_issue_keys}"
