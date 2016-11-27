@@ -88,6 +88,30 @@ module Agilizer
           hash[k.to_s] = v
         end
       end
+
+      #==============================
+      # SPECIFIC QUERIES
+      #==============================
+
+      # Selects issues with at least one pull request in the
+      # `github_pull_requests` column.
+      #
+      # @return [Array] of hashes with 2 keys:
+      #   - :identifier
+      #   - :github_pull_requests
+      def self.all_with_github_pull_requests
+        table.where("json_array_length(github_pull_requests) > 0").select(
+          :identifier,
+          :github_pull_requests
+        ).entries
+      end
+
+      def self.all_with_changed_files
+        table.where("array_length(changed_files, 1) <> 0").select(
+          :identifier,
+          :changed_files
+        ).entries
+      end
     end
   end
 end
