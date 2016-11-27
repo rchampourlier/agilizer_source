@@ -8,7 +8,7 @@ require "agilizer/interface/jira/transformations/2_add_simple_history"
 
 second = 1
 
-describe Agilizer::Interface::Jira::Transformations::Support do
+describe Agilizer::Interface::JIRA::Transformations::Support do
 
   let(:source_data) { SpecCase.get_jira_issues(1).first }
   let(:time) { Time.now }
@@ -95,7 +95,7 @@ describe Agilizer::Interface::Jira::Transformations::Support do
 
     context "spec data 1" do
       let(:processing_data) do
-        Agilizer::Interface::Jira::Transformations::AddSimpleHistory.run(source_data, {})
+        Agilizer::Interface::JIRA::Transformations::AddSimpleHistory.run(source_data, {})
       end
       subject { described_class.value_at_time(processing_data, field, time) }
 

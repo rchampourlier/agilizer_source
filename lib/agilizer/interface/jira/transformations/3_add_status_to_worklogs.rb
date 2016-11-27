@@ -2,7 +2,7 @@ require 'agilizer/interface/jira/transformations/support/value_at_time'
 
 module Agilizer
   module Interface
-    module Jira
+    class JIRA
       module Transformations
 
         # For each worklog in the processing data, add 'status' corresponding

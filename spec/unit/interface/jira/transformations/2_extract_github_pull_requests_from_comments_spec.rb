@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'support/spec_case'
 require 'agilizer/interface/jira/transformations/2_extract_github_pull_requests_from_comments'
 
-describe Agilizer::Interface::Jira::Transformations::ExtractGithubPullRequestsFromComments do
+describe Agilizer::Interface::JIRA::Transformations::ExtractGithubPullRequestsFromComments do
 
   describe '::run(data, _processing_data)' do
     subject { described_class.run(data, {}) }

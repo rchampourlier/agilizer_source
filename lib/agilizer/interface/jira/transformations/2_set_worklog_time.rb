@@ -1,6 +1,6 @@
 module Agilizer
   module Interface
-    module Jira
+    class JIRA
       module Transformations
 
         # Replaces "started_at" and "created_at" by a single "time"

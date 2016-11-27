@@ -3,7 +3,7 @@ require 'agilizer/interface/jira/transformations/support/timespent_at_time'
 
 module Agilizer
   module Interface
-    module Jira
+    class JIRA
       module Transformations
 
         # Adds sprint information to the processing data.

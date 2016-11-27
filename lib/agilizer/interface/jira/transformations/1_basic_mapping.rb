@@ -2,7 +2,7 @@ require 'hash_op/mapping'
 
 module Agilizer
   module Interface
-    module Jira
+    class JIRA
       module Transformations
 
         # Applies the mapping defined by config/mapping.json

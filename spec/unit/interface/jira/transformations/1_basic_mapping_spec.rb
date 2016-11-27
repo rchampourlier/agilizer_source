@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'support/spec_case'
 require 'agilizer/interface/jira/transformations/1_basic_mapping'
 
-describe Agilizer::Interface::Jira::Transformations::BasicMapping do
+describe Agilizer::Interface::JIRA::Transformations::BasicMapping do
 
   describe '::run(data, _processing_data)' do
     subject { described_class.run(data)}

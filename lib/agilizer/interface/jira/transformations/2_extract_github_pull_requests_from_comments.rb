@@ -2,7 +2,7 @@ require 'hash_op/mapping'
 
 module Agilizer
   module Interface
-    module Jira
+    class JIRA
       module Transformations
 
         # A JobTeaser specific transformation which extracts the

@@ -50,7 +50,7 @@ jira_client_options = {
   password: ENV['JIRA_PASSWORD'],
   logger: Logger.new(STDOUT)
 }
-Agilizer::Interface::Jira.import_issue(issue_key, jira_client_options)
+Agilizer::Interface::JIRA.import_issue(issue_key, jira_client_options)
 ```
 
 ## Understanding

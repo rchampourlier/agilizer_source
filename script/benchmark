@@ -21,7 +21,7 @@ Benchmark.bm do |x|
   x.report('seq: ') do
     loop_size.times do
       source_issues.each do |source_issue|
-        Agilizer::Interface::Jira::Transformations.run(source_issue.data)
+        Agilizer::Interface::JIRA::Transformations.run(source_issue.data)
       end
     end
   end
@@ -32,7 +32,7 @@ Benchmark.bm do |x|
         transformation_pool = Thread.pool(issues_count)
         source_issues.each do |source_issue|
           transformation_pool.process do
-            Agilizer::Interface::Jira::Transformations.run(source_issue.data)
+            Agilizer::Interface::JIRA::Transformations.run(source_issue.data)
           end
         end
         transformation_pool.shutdown

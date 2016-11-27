@@ -6,7 +6,7 @@ require "agilizer/interface/jira/transformations/2_set_worklog_time"
 minute = 60
 hour = 60 * minute
 
-describe Agilizer::Interface::Jira::Transformations::SetWorklogTime do
+describe Agilizer::Interface::JIRA::Transformations::SetWorklogTime do
   let(:time) { Time.now }
   before { Timecop.freeze(time) }
   after { Timecop.return }

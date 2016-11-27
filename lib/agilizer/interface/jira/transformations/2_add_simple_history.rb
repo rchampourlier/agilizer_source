@@ -2,7 +2,7 @@ require 'hash_op'
 
 module Agilizer
   module Interface
-    module Jira
+    class JIRA
       module Transformations
 
         # Simplify history from `data.changelog.histories` and add simplified

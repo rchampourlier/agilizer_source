@@ -21,7 +21,7 @@ module Agilizer
     # attributes, we rebuild it using sprint information from
     # the existing issues.
     module SprintsFromHistory
-      TRANSFORMATION = Interface::Jira::Transformations::AddSprintInformation
+      TRANSFORMATION = Interface::JIRA::Transformations::AddSprintInformation
 
       def run(issue_identifier, sprints_info = nil)
         data = Data::IssueRepository.find_by(identifier: issue_identifier)

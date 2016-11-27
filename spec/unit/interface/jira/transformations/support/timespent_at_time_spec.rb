@@ -8,15 +8,15 @@ require "agilizer/interface/jira/transformations/support/timespent_at_time"
 
 hour = 60 * 60
 
-describe Agilizer::Interface::Jira::Transformations::Support do
+describe Agilizer::Interface::JIRA::Transformations::Support do
 
   describe "::timespent_at_time(data, time)" do
 
     let(:data) do
       source_data = SpecCase.get_jira_issues(1).first
-      processing_data = Agilizer::Interface::Jira::Transformations::BasicMapping.run(source_data, {})
-      processing_data = Agilizer::Interface::Jira::Transformations::SetWorklogTime.run(source_data, processing_data)
-      Agilizer::Interface::Jira::Transformations::AddSimpleHistory.run(source_data, processing_data)
+      processing_data = Agilizer::Interface::JIRA::Transformations::BasicMapping.run(source_data, {})
+      processing_data = Agilizer::Interface::JIRA::Transformations::SetWorklogTime.run(source_data, processing_data)
+      Agilizer::Interface::JIRA::Transformations::AddSimpleHistory.run(source_data, processing_data)
     end
 
     context "before issue creation" do

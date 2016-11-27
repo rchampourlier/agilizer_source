@@ -2,7 +2,7 @@ require "spec_helper"
 require "support/spec_case"
 require "agilizer/interface/jira/transformations/2_add_simple_history"
 
-describe Agilizer::Interface::Jira::Transformations::AddSimpleHistory do
+describe Agilizer::Interface::JIRA::Transformations::AddSimpleHistory do
 
   describe "::run(source_data, processing_data)" do
 

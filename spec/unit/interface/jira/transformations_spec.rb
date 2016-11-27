@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'support/spec_case'
 require 'agilizer/interface/jira/transformations'
 
-describe Agilizer::Interface::Jira::Transformations do
+describe Agilizer::Interface::JIRA::Transformations do
   let(:transformation_1_addition) { { gone_through_1: true } }
   let(:transformation_2_addition) { { gone_through_2: true } }
 
@@ -56,20 +56,20 @@ describe Agilizer::Interface::Jira::Transformations do
     it 'returns grouped transformation modules' do
       expect(described_class.transformations).to eq([
         [
-          Agilizer::Interface::Jira::Transformations::BasicMapping
+          Agilizer::Interface::JIRA::Transformations::BasicMapping
         ],
         [
-          Agilizer::Interface::Jira::Transformations::AddSimpleHistory,
-          Agilizer::Interface::Jira::Transformations::ExtractGithubPullRequestsFromComments,
-          Agilizer::Interface::Jira::Transformations::SetWorklogTime
+          Agilizer::Interface::JIRA::Transformations::AddSimpleHistory,
+          Agilizer::Interface::JIRA::Transformations::ExtractGithubPullRequestsFromComments,
+          Agilizer::Interface::JIRA::Transformations::SetWorklogTime
         ],
         [
-          Agilizer::Interface::Jira::Transformations::AddFinalFixVersion,
-          Agilizer::Interface::Jira::Transformations::AddSprintInformation,
-          Agilizer::Interface::Jira::Transformations::AddSprintNameToWorklogs,
-          Agilizer::Interface::Jira::Transformations::AddStatusToWorklogs,
-          Agilizer::Interface::Jira::Transformations::CalculateStatusesStatistics,
-          Agilizer::Interface::Jira::Transformations::CalculateTimePerStatus
+          Agilizer::Interface::JIRA::Transformations::AddFinalFixVersion,
+          Agilizer::Interface::JIRA::Transformations::AddSprintInformation,
+          Agilizer::Interface::JIRA::Transformations::AddSprintNameToWorklogs,
+          Agilizer::Interface::JIRA::Transformations::AddStatusToWorklogs,
+          Agilizer::Interface::JIRA::Transformations::CalculateStatusesStatistics,
+          Agilizer::Interface::JIRA::Transformations::CalculateTimePerStatus
         ]
       ])
     end

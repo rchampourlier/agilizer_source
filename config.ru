@@ -11,7 +11,7 @@ logger.level = Logger.const_get(ENV['JIRA_LOG_LEVEL'].to_sym)
 # (optional: bin/sync script may be used instead)
 map '/jira' do
   require 'agilizer/interface/jira'
-  run Agilizer::Interface::Jira.webhook_app(
+  run Agilizer::Interface::JIRA.webhook_app(
     domain: ENV['JIRA_DOMAIN'],
     username: ENV['JIRA_USERNAME'],
     password: ENV['JIRA_PASSWORD'],

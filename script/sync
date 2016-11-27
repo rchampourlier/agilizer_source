@@ -18,7 +18,7 @@ logger = Logger.new(STDOUT)
 logger.level = Logger.const_get(ENV["JIRA_LOG_LEVEL"].to_sym)
 
 require "agilizer/interface/jira"
-Agilizer::Interface::Jira.import_project(ENV["JIRA_PROJECT_KEY"],
+Agilizer::Interface::JIRA.import_project(ENV["JIRA_PROJECT_KEY"],
   domain: ENV["JIRA_DOMAIN"],
   username: ENV["JIRA_USERNAME"],
   password: ENV["JIRA_PASSWORD"],

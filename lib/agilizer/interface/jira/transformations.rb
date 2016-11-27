@@ -1,6 +1,7 @@
+# frozen_string_literal: true
 module Agilizer
   module Interface
-    module Jira
+    class JIRA
 
       # Functional module to transform data from JIRA issue
       # representation to Agilizer's.

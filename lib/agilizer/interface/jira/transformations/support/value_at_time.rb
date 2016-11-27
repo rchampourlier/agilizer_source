@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 module Agilizer
   module Interface
-    module Jira
+    class JIRA
       module Transformations
         module Support
 

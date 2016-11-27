@@ -1,9 +1,10 @@
+# frozen_string_literal: true
 require "agilizer/interface/jira/transformations"
 require "agilizer/data/issue_repository"
 
 module Agilizer
   module Interface
-    module Jira
+    class JIRA
 
       # An instance of the notifier is associated to the `JiraCache::Client`
       # instance and #publish is called when specific events of the client

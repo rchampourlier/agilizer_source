@@ -2,7 +2,7 @@
 
 # For each issue in JiraCache, not marked as deleted in JIRA
 # (field `deleted_from_jira_at`), send a "fetched_issue" event
-# to the Agilizer::Interface::Jira::Notifier so that
+# to the Agilizer::Interface::JIRA::Notifier so that
 # the Agilizer's Issue record gets updated.
 #
 # NB:
@@ -31,7 +31,7 @@ t_start = Time.now
 
 keys = JiraCache::Data::IssueRepository.keys_for_non_deleted_issues
 keys.each do |key|
-  notifier = Agilizer::Interface::Jira::Notifier.new(logger: logger)
+  notifier = Agilizer::Interface::JIRA::Notifier.new(logger: logger)
   data = JiraCache::Issue.find_by_key(key)["data"]
   event_data = {
     key: key,

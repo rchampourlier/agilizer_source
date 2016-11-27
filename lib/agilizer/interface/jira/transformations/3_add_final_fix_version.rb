@@ -2,7 +2,7 @@ require 'hash_op/filter'
 
 module Agilizer
   module Interface
-    module Jira
+    class JIRA
       module Transformations
 
         # Transformation adding the last fixVersion for the issue to

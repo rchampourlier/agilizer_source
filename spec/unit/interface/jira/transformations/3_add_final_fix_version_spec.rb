@@ -3,10 +3,10 @@ require 'support/spec_case'
 require 'agilizer/interface/jira/transformations/1_basic_mapping'
 require 'agilizer/interface/jira/transformations/3_add_final_fix_version'
 
-describe Agilizer::Interface::Jira::Transformations::AddFinalFixVersion do
+describe Agilizer::Interface::JIRA::Transformations::AddFinalFixVersion do
   let(:source_data) { SpecCase.get_jira_issues(1).first }
   let(:processing_data) do
-    Agilizer::Interface::Jira::Transformations::BasicMapping.run(source_data, {})
+    Agilizer::Interface::JIRA::Transformations::BasicMapping.run(source_data, {})
   end
 
   describe '::run(source_data, processing_data)' do

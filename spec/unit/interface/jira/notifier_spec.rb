@@ -1,7 +1,8 @@
+# frozen_string_literal: true
 require "spec_helper"
 require "agilizer/interface/jira/notifier"
 
-describe Agilizer::Interface::Jira::Notifier do
+describe Agilizer::Interface::JIRA::Notifier do
   let(:event_data) { { key: "issue_key", data: issue_data } }
   let(:issue_data) { { source: true } }
   let(:processed_data) { { processed: true } }
@@ -20,14 +21,14 @@ describe Agilizer::Interface::Jira::Notifier do
       let(:event_name) { "fetched_issue" }
 
       it "processes the issue data with Transformations::run(data)" do
-        expect(Agilizer::Interface::Jira::Transformations)
+        expect(Agilizer::Interface::JIRA::Transformations)
           .to receive(:run)
           .with(issue_data)
         subject.publish(event_name, event_data)
       end
 
       it "runs Data::IssueRepository.run(processed_data)" do
-        allow(Agilizer::Interface::Jira::Transformations)
+        allow(Agilizer::Interface::JIRA::Transformations)
           .to receive(:run)
           .with(issue_data)
           .and_return(processed_data)
