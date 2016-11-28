@@ -47,6 +47,8 @@ module Agilizer
       #   containing :owner, :repo and :id attributes
       def fetch_changed_files(pull_request)
         pr_data = fetch_pr_data(pull_request)
+        return nil if pr_data.nil?
+
         sha = pr_data["merge_commit_sha"]
         return nil if sha.nil?
 
