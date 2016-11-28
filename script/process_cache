@@ -3,7 +3,7 @@
 # For each issue in JiraCache, not marked as deleted in JIRA
 # (field `deleted_from_jira_at`), send a "fetched_issue" event
 # to the Agilizer::Interface::JIRA::Notifier so that
-# the Agilizer's Issue record gets updated.
+# the Agilizer"s Issue record gets updated.
 #
 # NB:
 #   - Agilizer issues are not cleared before reprocessing.
@@ -12,32 +12,31 @@
 #   - No update is done on JiraCache stored issues.
 
 # Load dependencies
-require 'rubygems'
-require 'bundler/setup'
+require "rubygems"
+require "bundler/setup"
+require "logger"
 
-$LOAD_PATH.unshift File.expand_path('../..', __FILE__)
-require 'config/boot'
-
-require 'agilizer'
-require 'agilizer/issue'
+$LOAD_PATH.unshift File.expand_path("../..", __FILE__)
+require "config/boot"
 
 logger = Logger.new(STDOUT)
-logger.level = Logger::DEBUG
+logger.level = Logger::INFO
 
-require 'jira_cache'
-require 'agilizer/interface/jira'
+require "jira_cache/data/issue_repository"
+require "agilizer/interface/jira"
+require "agilizer/data/issue_repository"
 
 t_start = Time.now
 
 keys = JiraCache::Data::IssueRepository.keys_for_non_deleted_issues
 keys.each do |key|
   notifier = Agilizer::Interface::JIRA::Notifier.new(logger: logger)
-  data = JiraCache::Issue.find_by_key(key)["data"]
+  data = JiraCache::Data::IssueRepository.find_by_key(key)[:data]
   event_data = {
     key: key,
-    data: data
+    data: data.to_h
   }
-  notifier.publish 'fetched_issue', event_data
+  notifier.publish "fetched_issue", event_data
 end
 
 logger.info "process_cache finished in #{Time.now - t_start}s"
