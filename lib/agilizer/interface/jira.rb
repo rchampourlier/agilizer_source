@@ -45,7 +45,8 @@ module Agilizer
         JiraCache.sync_issue(client, issue_key)
       end
 
-      # @param client_options [Hash] same as `::import`
+      # Returns a Sinatra::App instance for responding to JIRA webhooks.
+      # Responds to POST /jira/
       #
       # To run the app processing JIRA webhooks, set it up in your
       # `config.ru` like this:

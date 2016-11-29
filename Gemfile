@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 source "https://rubygems.org"
 
 ruby "2.3.1"
@@ -21,7 +22,7 @@ gem "hash_op",
 # Interfaces
 gem "jira_cache",
   git: "https://github.com/rchampourlier/jira_cache",
-  ref: :postgresql
+  ref: "0.1.1"
 
 # Enrichments
 gem "rest-client"

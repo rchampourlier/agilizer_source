@@ -7,10 +7,10 @@ GIT
 
 GIT
   remote: https://github.com/rchampourlier/jira_cache
-  revision: 033c7eb2ca864a2054582a08f4e90724a42288d0
-  ref: postgresql
+  revision: 3b889693ce9529c2b851cc316a33bcd398f86d00
+  ref: 0.1.1
   specs:
-    jira_cache (0.1.0)
+    jira_cache (0.1.1)
       activesupport-inflector
       i18n
       pg
@@ -171,7 +171,7 @@ GEM
     spoon (0.0.6)
       ffi
     terminal-notifier-guard (1.7.0)
-    thor (0.19.3)
+    thor (0.19.4)
     thread (0.2.2)
     thread_safe (0.3.5)
     tilt (2.0.5)
