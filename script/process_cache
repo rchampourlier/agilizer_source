@@ -28,15 +28,16 @@ require "agilizer/data/issue_repository"
 
 t_start = Time.now
 
+notifier = Agilizer::Interface::JIRA::Notifier.new
 keys = JiraCache::Data::IssueRepository.keys_for_non_deleted_issues
 keys.each do |key|
-  notifier = Agilizer::Interface::JIRA::Notifier.new(logger: logger)
+  logger.info "process issue with key: #{key}"
   data = JiraCache::Data::IssueRepository.find_by_key(key)[:data]
   event_data = {
     key: key,
     data: data.to_h
   }
-  notifier.publish "fetched_issue", event_data
+  notifier.publish :fetched_issue, event_data
 end
 
 logger.info "process_cache finished in #{Time.now - t_start}s"

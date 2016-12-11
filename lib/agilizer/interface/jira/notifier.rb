@@ -1,4 +1,6 @@
 # frozen_string_literal: true
+require "logger"
+require "event_bus"
 require "agilizer/interface/jira/transformations"
 require "agilizer/data/issue_repository"
 
@@ -12,17 +14,20 @@ module Agilizer
       #   - fetched_issue
       class Notifier
 
-        def initialize(logger: nil)
-          @logger = logger
+        def initialize
+          EventBus.subscribe do |event_name:, event_data:|
+            logger.debug("Received event named \"#{event_name}\"")
+            process_fetched_issue(event_data: event_data) if event_name == :fetched_issue
+          end
         end
 
         def publish(event_name, event_data)
-          send(:"on_#{event_name}", event_data)
+          EventBus.publish(event_name: event_name, event_data: event_data)
         end
 
         private
 
-        def on_fetched_issue(event_data)
+        def process_fetched_issue(event_data:)
           issue_key = event_data[:key]
           issue_data = event_data[:data]
           transformed_data = Transformations.run(issue_data)
@@ -31,11 +36,7 @@ module Agilizer
         end
 
         def logger
-          @logger ||= (
-            logger = Logger.new(STDOUT)
-            logger.level = Logger::DEBUG
-            logger
-          )
+          @logger ||= Logger.new(STDOUT)
         end
       end
     end

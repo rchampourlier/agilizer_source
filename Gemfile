@@ -32,7 +32,12 @@ gem "rack-cors"
 gem "grape"
 gem "grape-rabl"
 
-# client
+# Patterns
+gem "event_bus",
+  git: "https://github.com/rchampourlier/event_bus",
+  ref: "0.1.0"
+
+# Client-side
 gem "sinatra"
 
 # Required in production group too

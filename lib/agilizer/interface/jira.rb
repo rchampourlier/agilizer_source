@@ -81,7 +81,7 @@ module Agilizer
       end
 
       def notifier
-        Notifier.new(logger: logger)
+        Notifier.new
       end
     end
   end

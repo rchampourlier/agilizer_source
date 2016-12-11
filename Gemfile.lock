@@ -1,4 +1,11 @@
 GIT
+  remote: https://github.com/rchampourlier/event_bus
+  revision: adcc08ba83ecfa7593cc52879f5d259a89f488d6
+  ref: 0.1.0
+  specs:
+    event_bus (0.1.0)
+
+GIT
   remote: https://github.com/rchampourlier/hash_op
   revision: 242fd14c73875c0aea4a0de6b4fcebcaef3a6f3c
   ref: master
@@ -195,6 +202,7 @@ DEPENDENCIES
   awesome_print
   codeclimate-test-reporter (~> 1.0.0)
   dotenv
+  event_bus!
   faker
   grape
   grape-rabl
