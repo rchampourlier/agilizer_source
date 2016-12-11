@@ -14,10 +14,10 @@ GIT
 
 GIT
   remote: https://github.com/rchampourlier/jira_cache
-  revision: 3b889693ce9529c2b851cc316a33bcd398f86d00
-  ref: 0.1.1
+  revision: 2530648e7244711289aa2a42c992c1e5b5dfcb50
+  ref: 0.1.3
   specs:
-    jira_cache (0.1.1)
+    jira_cache (0.1.3)
       activesupport-inflector
       i18n
       pg

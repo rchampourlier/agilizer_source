@@ -22,7 +22,7 @@ gem "hash_op",
 # Interfaces
 gem "jira_cache",
   git: "https://github.com/rchampourlier/jira_cache",
-  ref: "0.1.1"
+  ref: "0.1.3"
 
 # Enrichments
 gem "rest-client"
