@@ -22,8 +22,7 @@ class SpecCase
         key: jira_issue["key"],
         data: jira_issue
       }
-      logger = ::Logger.new(File.open("/dev/null", "w"))
-      notifier = Agilizer::Interface::JIRA::Notifier.new(logger: logger)
+      notifier = Agilizer::Interface::JIRA::Notifier.new(logger: nil)
       notifier.publish :fetched_issue, event
     end
   end

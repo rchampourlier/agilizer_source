@@ -33,6 +33,7 @@ Sequel.extension :migration, :core_extensions
 
 MIGRATIONS_DIR = File.expand_path("../../config/db_migrations", __FILE__)
 RSpec.configure do |config|
+  config.order = :random
 
   config.before(:all) do
     Sequel::Migrator.apply(client, MIGRATIONS_DIR)

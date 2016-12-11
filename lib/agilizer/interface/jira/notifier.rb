@@ -13,11 +13,16 @@ module Agilizer
       # happen, such as:
       #   - fetched_issue
       class Notifier
+        attr_reader :logger
 
-        def initialize
+        def initialize(logger: nil)
+          @logger = logger
           EventBus.subscribe do |event_name:, event_data:|
-            logger.debug("Received event named \"#{event_name}\"")
-            process_fetched_issue(event_data: event_data) if event_name == :fetched_issue
+            logger.debug("Received event named \"#{event_name}\"") if logger
+            case event_name
+            when :fetched_issue then process_fetched_issue(event_data: event_data)
+            else raise StandardError, "Unknown event \"#{event_name}\""
+            end
           end
         end
 
@@ -32,11 +37,7 @@ module Agilizer
           issue_data = event_data[:data]
           transformed_data = Transformations.run(issue_data)
           Data::IssueRepository.insert(transformed_data)
-          logger.info "Updated issue #{issue_key}"
-        end
-
-        def logger
-          @logger ||= Logger.new(STDOUT)
+          logger.info "Updated issue #{issue_key}" if logger
         end
       end
     end

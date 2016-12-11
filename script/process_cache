@@ -28,7 +28,7 @@ require "agilizer/data/issue_repository"
 
 t_start = Time.now
 
-notifier = Agilizer::Interface::JIRA::Notifier.new
+notifier = Agilizer::Interface::JIRA::Notifier.new(logger: logger)
 keys = JiraCache::Data::IssueRepository.keys_for_non_deleted_issues
 keys.each do |key|
   logger.info "process issue with key: #{key}"

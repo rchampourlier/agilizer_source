@@ -7,18 +7,24 @@ describe Agilizer::Interface::JIRA::Notifier do
   let(:issue_data) { { source: true } }
   let(:processed_data) { { processed: true } }
 
+  before do
+    allow(Agilizer::Data::IssueRepository)
+      .to receive(:insert)
+      .and_return(nil)
+  end
+
+  after do
+    allow(Agilizer::Data::IssueRepository)
+      .to receive(:insert)
+      .and_call_original
+    RSpec::Mocks.space.proxy_for(Agilizer::Interface::JIRA::Transformations).reset
+  end
+
   describe "#publish(event_name, data)" do
     let(:subject) { described_class.new }
-    let(:processor) { double("Processor") }
-
-    before do
-      allow(Agilizer::Data::IssueRepository)
-        .to receive(:insert)
-        .and_return(nil)
-    end
 
     context "event name is \"fetched_issue\"" do
-      let(:event_name) { "fetched_issue" }
+      let(:event_name) { :fetched_issue }
 
       it "processes the issue data with Transformations::run(data)" do
         expect(Agilizer::Interface::JIRA::Transformations)
@@ -40,12 +46,12 @@ describe Agilizer::Interface::JIRA::Notifier do
     end
 
     context "unknown event name" do
-      let(:event_name) { "unknown" }
+      let(:event_name) { :unknown }
 
-      it "fails with no method error" do
+      it "raises an Error" do
         expect do
           subject.publish(event_name, event_data)
-        end.to raise_error(NoMethodError)
+        end.to raise_error(StandardError, "Unknown event \"unknown\"")
       end
     end
   end
