@@ -27,7 +27,7 @@ module Agilizer
         end
 
         def publish(event_name, event_data)
-          EventBus.publish(event_name: event_name, event_data: event_data)
+          EventBus.publish(event_name: event_name.to_sym, event_data: event_data)
         end
 
         private
