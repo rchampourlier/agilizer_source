@@ -6,7 +6,7 @@ Style/EmptyLinesAroundBody:
   Enabled: false
 Style/EmptyLinesAroundModuleBody:
   Enabled: false
-Style/EmptyLinesAroundClass:
+Style/EmptyLinesAroundClassBody:
   Enabled: false
 Style/AlignParameters:
   EnforcedStyle: with_fixed_indentation
