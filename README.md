@@ -28,16 +28,20 @@ bin/console
 ### Reprocess all issues cached in JiraCache store
 
 ```
-bin/process_cache
+script/process_cache
 ```
 
 ### Cleanup Agilizer issues and get a fresh update from JiraCache store
 
 ```
-bin/clear_agilizer
-bin/sync
-bin/process_cache
+script/clear_agilizer
+script/sync
+script/process_cache
 ```
+
+## Deployment
+
+See the specific documentation in [doc/deploy.md](//doc/deploy.md).
 
 ## Troubleshooting
 

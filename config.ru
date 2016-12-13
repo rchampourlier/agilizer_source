@@ -10,6 +10,9 @@ logger.level = Logger.const_get(ENV["JIRA_LOG_LEVEL"].to_sym)
 
 # JIRA webhook for synchronization
 # (optional: bin/sync script may be used instead)
+# Available routes:
+#   - GET /jira: status and application information
+#   - POST /jira: JIRA webhook processing
 map "/jira" do
   require "agilizer/interface/jira"
   run Agilizer::Interface::JIRA.new(
