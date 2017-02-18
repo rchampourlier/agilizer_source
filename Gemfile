@@ -23,6 +23,7 @@ gem "hash_op",
 gem "jira_cache",
   git: "https://github.com/rchampourlier/jira_cache",
   ref: "0.1.3"
+# gem "jira_cache", path: "~/Dev/_personal/+agilizer/jira_cache"
 
 # Enrichments
 gem "rest-client"
@@ -33,9 +34,7 @@ gem "grape"
 gem "grape-rabl"
 
 # Patterns
-gem "event_bus",
-  git: "https://github.com/rchampourlier/event_bus",
-  ref: "0.1.0"
+gem "event_train", "~> 0.2.1"
 
 # Client-side
 gem "sinatra"

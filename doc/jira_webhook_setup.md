@@ -12,8 +12,6 @@ Create a new webhook:
   - JQL: that's up to you
   - Selected events:
     - Issue: created, updated, deleted, worklog changed
-    - Worklog: created, updated, deleted
-    - Comment: created, updated, deleted
 
 Your application should now receive a webhook when an event happens and the issue should be updated in AgilizerSource!
 

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 require "logger"
-require "event_bus"
+require "event_train"
 require "agilizer/interface/jira/transformations"
 require "agilizer/data/issue_repository"
 
@@ -17,7 +17,7 @@ module Agilizer
 
         def initialize(logger: nil)
           @logger = logger
-          EventBus.subscribe do |event_name:, event_data:|
+          EventTrain.subscribe do |event_name:, event_data:|
             logger.debug("Received event named \"#{event_name}\"") if logger
             case event_name
             when :fetched_issue then process_fetched_issue(event_data: event_data)
@@ -27,7 +27,7 @@ module Agilizer
         end
 
         def publish(event_name, event_data)
-          EventBus.publish(event_name: event_name.to_sym, event_data: event_data)
+          EventTrain.publish(event_name: event_name.to_sym, event_data: event_data)
         end
 
         private

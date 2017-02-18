@@ -1,19 +1,13 @@
-# STATUS
+# History
 
-## Next
+## 2017-02-18 - 0.1.0
 
-### Objective
+- Updated `event_train` gem (was `event_bus`).
+- Version bump: `0.1.0`
 
-- [Client] add total on tables
-- Fix identified issues
-  - deleted issues are still showed on client (e.g. JT-2586)
-  - issues will not get updated / synced if only the sprint is renamed, so the updated issues will have the new sprint name while the other keep the old one, making them look like they're in different sprints...
-- Improve sprints#show view, issues panel:
-  - better display of time estimate and timespent values
-  - filtering
+## 2016-12-13
 
-### Status
-
+- Finalized reworking a new version using PostgreSQL instead of MongoDB.
 
 ## 2015-09-03
 

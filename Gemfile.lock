@@ -1,11 +1,4 @@
 GIT
-  remote: https://github.com/rchampourlier/event_bus
-  revision: adcc08ba83ecfa7593cc52879f5d259a89f488d6
-  ref: 0.1.0
-  specs:
-    event_bus (0.1.0)
-
-GIT
   remote: https://github.com/rchampourlier/hash_op
   revision: 242fd14c73875c0aea4a0de6b4fcebcaef3a6f3c
   ref: master
@@ -55,6 +48,7 @@ GEM
       unf (>= 0.0.5, < 1.0.0)
     dotenv (2.1.1)
     equalizer (0.0.11)
+    event_train (0.2.1)
     faker (1.6.6)
       i18n (~> 0.5)
     ffi (1.9.14)
@@ -202,7 +196,7 @@ DEPENDENCIES
   awesome_print
   codeclimate-test-reporter (~> 1.0.0)
   dotenv
-  event_bus!
+  event_train (~> 0.2.1)
   faker
   grape
   grape-rabl
