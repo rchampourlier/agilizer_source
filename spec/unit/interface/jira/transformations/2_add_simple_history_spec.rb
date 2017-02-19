@@ -15,7 +15,6 @@ describe Agilizer::Interface::JIRA::Transformations::AddSimpleHistory do
       fields = @result.map { |r| r["field"] }.uniq.sort
       expect(fields).to eq %w(
         assignee
-        sprints
         status
         time_estimate
         time_original_estimate
@@ -29,7 +28,6 @@ describe Agilizer::Interface::JIRA::Transformations::AddSimpleHistory do
         history_for_first_result = histories.find do |history|
           original_field =
             case first_result["field"]
-            when "sprints" then "Sprint"
             when "time_estimate" then "timeestimate"
             when "time_original_estimate" then "timeoriginalestimate"
             else first_result["field"]
@@ -41,18 +39,11 @@ describe Agilizer::Interface::JIRA::Transformations::AddSimpleHistory do
       end
     end
 
-    describe "on field \"Sprint\"" do
-      it "should parse the values to arrays" do
-        sprint_history = @result.find { |h| h["field"] == "sprints" }
-        expect(sprint_history["from"]).to be_a Array
-      end
-    end
-
     describe "on field \"timeestimate\"" do
       it "should parse the values to an integer" do
-        sprint_history = @result.find { |h| h["field"] == "time_estimate" }
-        from = sprint_history["from"]
-        to = sprint_history["to"]
+        history = @result.find { |h| h["field"] == "time_estimate" }
+        from = history["from"]
+        to = history["to"]
         expect(from.nil? || from.is_a?(Numeric)).to be true
         expect(to.nil? || to.is_a?(Numeric)).to be true
       end
@@ -60,9 +51,9 @@ describe Agilizer::Interface::JIRA::Transformations::AddSimpleHistory do
 
     describe "on field \"timeoriginalestimate\"" do
       it "should parse the values to integers" do
-        sprint_history = @result.find { |h| h["field"] == "time_original_estimate" }
-        from = sprint_history["from"]
-        to = sprint_history["to"]
+        history = @result.find { |h| h["field"] == "time_original_estimate" }
+        from = history["from"]
+        to = history["to"]
         expect(from.nil? || from.is_a?(Numeric)).to be true
         expect(to.nil? || to.is_a?(Numeric)).to be true
       end

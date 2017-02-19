@@ -15,7 +15,6 @@ module Agilizer
           # adding the history's creation time on each time.
           #
           # Supported items are items for fields:
-          #   - 'Sprint' => 'sprints'
           #   - 'timeestimate' => 'time_estimate'
           #   - 'timeoriginalestimate' => 'time_original_estimate'
           #   - 'status'
@@ -53,26 +52,12 @@ module Agilizer
           def simplify_history_item(item)
             simplified_item =
               case item['field']
-              when 'Sprint' then simplify_history_item_sprint(item)
               when /time(.*)estimate/ then simplify_history_item_time_estimate(item)
               when 'status' then simplify_history_item_status(item)
               when 'assignee' then simplify_history_item_assignee(item)
             end
           end
           module_function :simplify_history_item
-
-          def simplify_history_item_sprint(item)
-            from = item['fromString']
-            to = item['toString']
-            from = from ? from.split(', ') : nil
-            to = to ? to.split(', ') : nil
-            {
-              'field' => 'sprints',
-              'from' => from,
-              'to' => to
-            }
-          end
-          module_function :simplify_history_item_sprint
 
           def simplify_history_item_time_estimate(item)
             {

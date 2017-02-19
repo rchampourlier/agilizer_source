@@ -5,55 +5,51 @@ Sequel.migration do
   up do
     create_table :issues do
 
-      # Identification
-      String :identifier, primary_key: true
+      # Metadata
       String :source
-      String :project_key
-      String :project_name
-
-      # Dates
-      DateTime :created_at
-      DateTime :updated_at
       DateTime :synced_at
       DateTime :deleted_at
-      DateTime :resolved_at
+      DateTime :local_created_at
+      DateTime :local_updated_at
 
-      # Estimate and worklogs
+      # Fields from mapping
+      String :identifier, primary_key: true
+      DateTime :created_at
+      DateTime :updated_at
+      String :project_name
+      String :project_key
+      String :status
+      DateTime :resolved_at
+      String :priority
+      String :summary, text: true
+      String :description, text: true
+      String :type
       Fixnum :timespent
       Fixnum :time_original_estimate
       Fixnum :time_estimate
-
-      # People
-      String :assignee
-      String :developer
-      String :reviewer
-
-      # Details
-      String :summary, text: true
-      String :description, text: true
-      String :status
-      String :type
-      String :priority
-      String :category
-      String :bug_cause
-      String :maintenance_type
-
-      column :changed_files, "text[]"
       column :labels, "text[]"
+      column :components, "text[]"
+      String :category
+      String :assignee
+      String :developer_backend
+      String :developer_frontend
+      String :reviewer
+      String :product_owner
+      String :bug_cause
+      String :epic
+      String :tribe
+
+      # Calculated
+      column :changed_files, "text[]"
       column :fix_versions, "json"
       column :history, "json"
-      column :sprints, "json"
       column :statuses_statistics, "json"
       column :time_per_status, "json"
       column :worklogs, "json"
 
       # Enrichments
-      column :final_fix_version, "json"
+      String :final_fix_version
       column :github_pull_requests, "json"
-
-      # Timestamps
-      DateTime :local_created_at
-      DateTime :local_updated_at
     end
   end
 

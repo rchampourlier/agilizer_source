@@ -18,6 +18,3 @@ require "config/boot"
 
 require "agilizer/enrichments/source_code_changes"
 Agilizer::Enrichments::SourceCodeChanges.run_for_applicable_issues
-
-# require "agilizer/enrichments/sprints_from_history"
-# Agilizer::Enrichments::SprintsFromHistory.run_for_applicable_issues

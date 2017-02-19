@@ -12,7 +12,6 @@ module Agilizer
         fix_versions
         github_pull_requests
         history
-        sprints
         statuses_statistics
         time_per_status
         worklogs

@@ -48,10 +48,13 @@ module Agilizer
               'labels'                 => { path: 'fields.labels' },
               'category'               => { path: 'fields.customfield_10400.value' },
               'assignee'               => { path: 'fields.assignee.name' },
-              'developer'              => { path: 'fields.customfield_10600.key' },
+              'developer_backend'      => { path: 'fields.customfield_10600.key' },
+              'developer_frontend'     => { path: 'fields.customfield_12403.key' },
               'reviewer'               => { path: 'fields.customfield_10601.key' },
+              'product_owner'          => { path: 'fields.customfield_11200.key' },
               'bug_cause'              => { path: 'fields.customfield_11101.value' },
-              'maintenance_type'       => { path: 'fields.customfield_11100.value' },
+              'epic'                   => { path: 'fields.customfield_10009.value' },
+              'tribe'                  => { path: 'fields.customfield_12100.value' },
 
               'fix_versions' => {
                 path: 'fields.fixVersions',
@@ -62,20 +65,6 @@ module Agilizer
                     'name'      => { path: 'name' },
                     'date'      => { path: 'releaseDate' },
                     'released'  => { path: 'released' }
-                  }
-                }
-              },
-
-              'sprints' => {
-                path: 'fields.customfield_10007',
-                type: :array,
-                item_mapping: {
-                  type: :parseable_string,
-                  parsing_mapping: {
-                    'name' =>       { regexp: 'name=([^,]*),' },
-                    'started_at' => { regexp: 'startDate=([^,]*),', type: :time },
-                    'ended_at' =>   { regexp: 'endDate=([^,]*),', type: :time },
-                    'state' =>      { regexp: 'state=([^,]*),' }
                   }
                 }
               },
