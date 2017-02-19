@@ -1,0 +1,17 @@
+#!/usr/bin/env ruby
+ENV_PREFIX = "export $(cat .env.development | xargs) && "
+
+target_version = ARGV[0]
+
+if target_version.nil? || target_version.empty?
+  puts "Call with an integer parameter specifying the version to rollback to"
+  exit 1
+end
+
+if (target_version =~ /\d+/).nil?
+  puts "Specified argument is not an integer"
+  exit 1
+end
+
+cmd =  "sequel -m config/db_migrations -M #{target_version} $DATABASE_URL"
+system cmd

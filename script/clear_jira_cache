@@ -3,7 +3,7 @@
 # Clear cache and performs a full sync.
 #
 # Usage:
-#     bin/rebuild
+#     script/clear_jira_cache
 
 # Load dependencies
 require "rubygems"
@@ -13,4 +13,4 @@ $LOAD_PATH.unshift File.expand_path("../..", __FILE__)
 require "config/boot"
 
 require "jira_cache/data/issue_repository"
-JiraCache::IssueRepository.delete_where("TRUE")
+JiraCache::Data::IssueRepository.delete_where("TRUE")

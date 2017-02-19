@@ -4,7 +4,7 @@
 # processes them and saves them as Issue records.
 #
 # Usage:
-#     bin/sync
+#     script/sync
 
 # Load dependencies
 require "rubygems"

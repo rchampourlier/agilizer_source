@@ -29,7 +29,7 @@ require "agilizer/data/issue_repository"
 client = Agilizer::Data::DB
 
 require "sequel"
-Sequel.extension :migration, :core_extensions
+Sequel.extension :migration, :core_extensions, :pg_json_ops
 
 MIGRATIONS_DIR = File.expand_path("../../config/db_migrations", __FILE__)
 RSpec.configure do |config|
