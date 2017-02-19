@@ -19,7 +19,7 @@ logger.level = Logger.const_get(ENV["JIRA_LOG_LEVEL"].to_sym)
 
 require "agilizer/interface/jira"
 jira_interface = Agilizer::Interface::JIRA.new(logger: logger)
-jira_interface.import_project(ENV["JIRA_PROJECT_KEY"])
+jira_interface.import_all
 
 # Cleanup issues deleted from JIRA
 require "jira_cache/data/issue_repository"

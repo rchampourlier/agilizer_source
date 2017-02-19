@@ -20,10 +20,7 @@ gem "hash_op",
 # gem "hash_op", path: "~/Dev/_personal/+agilizer/hash_op"
 
 # Interfaces
-gem "jira_cache",
-  git: "https://github.com/rchampourlier/jira_cache",
-  ref: "0.1.3"
-# gem "jira_cache", path: "~/Dev/_personal/+agilizer/jira_cache"
+gem "jira_cache", "~> 0.2.2"
 
 # Enrichments
 gem "rest-client"

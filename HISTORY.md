@@ -1,5 +1,9 @@
 # History
 
+## 2017-02-19 - 0.2.2
+
+- Updated to `jira_cache` 0.2.2 to enable fetching issues for all projects.
+
 ## 2017-02-19 - 0.2.1
 
 - Minor fixes

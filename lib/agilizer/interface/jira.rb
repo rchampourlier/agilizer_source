@@ -24,7 +24,12 @@ module Agilizer
         @logger = logger
       end
 
-      # Performs a sync through `JiraCache.sync_project_issues` format
+      # Performs a sync through `JiraCache.sync_issue`.
+      def import_all
+        JiraCache.sync_issues(client: client)
+      end
+
+      # Performs a sync through `JiraCache.sync_issues` for
       # the specified project.
       # JiraCache notifies each issue fetch through the provided
       # notifier, which handles processing the fetched issue
@@ -38,7 +43,7 @@ module Agilizer
       # @param :logger [Logger] the logger used by the JIRA client to log
       #     operations
       def import_project(project_key)
-        JiraCache.sync_project_issues(client, project_key)
+        JiraCache.sync_issues(client: client, project_key: project_key)
       end
 
       def import_issue(issue_key)
