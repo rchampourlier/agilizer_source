@@ -1,5 +1,9 @@
 # History
 
+## 2017-02-19 - 0.2.1
+
+- Minor fixes
+
 ## 2017-02-19 - 0.2.0
 
 - Removed sprint-related fields and operations
