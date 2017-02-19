@@ -14,11 +14,7 @@ describe Agilizer::Interface::JIRA::Transformations::AddFinalFixVersion do
     it 'adds the last released fix version' do
       enriched = described_class.run(source_data, processing_data)
       result = enriched['final_fix_version']
-      expect(result).to eq({
-        'name' => '2014-10-24',
-        'date' => '2014-10-24',
-        'released' => true
-      })
+      expect(result).to eq('2014-10-24')
     end
   end
 end
