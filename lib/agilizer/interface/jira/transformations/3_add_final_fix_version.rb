@@ -10,9 +10,10 @@ module Agilizer
         module AddFinalFixVersion
 
           def self.run(_source_data, processing_data)
-            fix_versions = processing_data['fix_versions']
-            final_fix_version = HashOp::Filter.filter(fix_versions, 'released' => true).last
-            processing_data.merge 'final_fix_version' => final_fix_version["name"]
+            versions = processing_data['fix_versions']
+            final_version = HashOp::Filter.filter(versions, 'released' => true).last
+            name = final_version ? final_version['name'] : nil
+            processing_data.merge 'final_fix_version' => name
           end
         end
       end

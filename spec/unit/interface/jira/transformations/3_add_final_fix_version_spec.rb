@@ -16,5 +16,19 @@ describe Agilizer::Interface::JIRA::Transformations::AddFinalFixVersion do
       result = enriched['final_fix_version']
       expect(result).to eq('2014-10-24')
     end
+
+    context 'without fix versions' do
+      let(:processing_data) do
+        data = Agilizer::Interface::JIRA::Transformations::BasicMapping.run(source_data, {})
+        data["fix_versions"] = []
+        data
+      end
+
+      it 'sets the `final_fix_version` to nil' do
+        enriched = described_class.run(source_data, processing_data)
+        result = enriched['final_fix_version']
+        expect(result).to be_nil
+      end
+    end
   end
 end
