@@ -1,22 +1,33 @@
-# Agilizer Fetch & Process
+# Agilizer Source
 
 [![Build Status](https://travis-ci.org/rchampourlier/agilizer_source.svg)](https://travis-ci.org/rchampourlier/agilizer_source)
 [![Coverage Status](https://coveralls.io/repos/rchampourlier/agilizer/badge.svg?branch=master&service=github)](https://coveralls.io/github/rchampourlier/agilizer?branch=master)
 [![Code Climate](https://codeclimate.com/github/rchampourlier/agilizer/badges/gpa.svg)](https://codeclimate.com/github/rchampourlier/agilizer)
 
-## Agilizer
+## About
 
-This is a component of the Agilizer suite. The Agilizer suite is intended on providing useful information and data for data-driven agile teams. It is intended to be usable with different project management solutions, though only JIRA integration has been implemented yet.
+### What is Agilizer?
 
-## Fetch & Process
+Agilizer is a suite of tools (Source, Notebooks...) which is intended for
+providing data for Agile team efficiency and velocity measuring.
 
-This part is intended on fetching data from a project management solution and process them to enable using them with the other components of the suite (e.g. the UI).
+It currently only supports JIRA data source and is customized for JobTeaser
+development team.
 
-Internally, this component is relying on the [jira-cache gem](https://github.com/rchampourlier/jira_cache) which helps with storing JIRA data locally, instead of relying on longer API calls.
+### What is the Source component?
+
+This part is intended on fetching data from a project management solution 
+and process them to enable using them with the other components of the suite 
+(e.g. the UI).
+
+Internally, this component is relying on the 
+[jira-cache gem](https://github.com/rchampourlier/jira_cache) which helps with 
+storing JIRA data locally, instead of relying on longer API calls.
 
 ## Prerequisites
 
-Create a `.env` file to setup required environment variables (see .env.example). Once this is done, you should be able to play with:
+Create a `.env` file to setup required environment variables (see .env.example). 
+Once this is done, you should be able to play with:
 
 ```
 bundle install
