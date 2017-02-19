@@ -1,5 +1,10 @@
 # History
 
+## 2017-02-19 - 0.2.0
+
+- Removed sprint-related fields and operations
+- Updated for new custom fields
+
 ## 2017-02-18 - 0.1.0
 
 - Updated `event_train` gem (was `event_bus`).
