@@ -1,5 +1,9 @@
 # History
 
+## 2017-02-23 - 0.2.3
+
+- Fixed `jira_cache` integration (bug when initialize the webhook app).
+
 ## 2017-02-19 - 0.2.2
 
 - Updated to `jira_cache` 0.2.2 to enable fetching issues for all projects.

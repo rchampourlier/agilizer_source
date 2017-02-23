@@ -59,8 +59,8 @@ module Agilizer
       #     map "jira" do
       #       run Agilizer::Interface::JIRA.webhook_app(client_options)
       #     end
-      def webhook_app
-        JiraCache.webhook_app(client)
+      def webhook_app(jira_cache_client: default_jira_cache_client)
+        JiraCache.webhook_app(client: jira_cache_client)
       end
 
       private
@@ -77,7 +77,7 @@ module Agilizer
         Logger.new(STDOUT)
       end
 
-      def client
+      def default_jira_cache_client
         client_config = jira_config.merge(
           notifier: notifier,
           logger: logger
