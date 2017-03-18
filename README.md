@@ -11,8 +11,11 @@
 Agilizer is a suite of tools (Source, Notebooks...) which is intended for
 providing data for Agile team efficiency and velocity measuring.
 
-It currently only supports JIRA data source and is customized for JobTeaser
-development team.
+It is currently customized for the JobTeaser Tech team and supports the
+following data sources:
+
+- JIRA: project management
+- Toggl: worklog reports
 
 ### What is the Source component?
 
@@ -20,13 +23,9 @@ This part is intended on fetching data from a project management solution
 and process them to enable using them with the other components of the suite 
 (e.g. the UI).
 
-Internally, this component is relying on the 
-[jira-cache gem](https://github.com/rchampourlier/jira_cache) which helps with 
-storing JIRA data locally, instead of relying on longer API calls.
-
 ## Prerequisites
 
-Create a `.env` file to setup required environment variables (see .env.example). 
+Create a `.env` file to setup required environment variables (see `.env.example`). 
 Once this is done, you should be able to play with:
 
 ```
@@ -35,6 +34,12 @@ bin/console
 ```
 
 ## Getting started
+
+### DB migration
+
+```
+bin/db/migrate
+```
 
 ### Initial import
 
