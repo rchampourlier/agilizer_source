@@ -1,20 +1,18 @@
+# frozen_string_literal: true
 #!/usr/bin/env ruby
 
-# Fetch new content from the different integrations.
+# Perform an initial import of all data from the available
+# sources.
 #
 # Currently:
 #   - import JIRA issues,
 #   - import Toggl reports.
 #
-# The synchronization is built to be run regularly.
-# It should be scheduled using a _crontab_ or similar
-# mechanism (e.g. Heroku Scheduler add-on).
-#
-# NB: for the initial import, the `script/import` script
-# must be used.
+# A date must be provided (see Usage below) to determine
+# from which date Toggl reports must be fetched.
 #
 # Usage:
-#     script/sync
+#     script/import 2017-01-01
 
 require "rubygems"
 require "bundler/setup"
@@ -44,6 +42,14 @@ logger.info "Deleted issues for the following identifiers: #{deleted_issue_keys}
 # Toggl #
 #########
 
+since = nil
+begin
+  since = Date.parse(ARGV[0])
+rescue TypeError
+  puts "Usage: script/import 2017-01-01"
+  exit 1
+end
 require "agilizer/interface/toggl"
 toggl_interface = Agilizer::Interface::Toggl.new(logger: logger)
-toggl_interface.import_all
+toggl_interface.import_all(date_since: since)
+

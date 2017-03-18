@@ -1,5 +1,11 @@
 # History
 
+## 2017-03-18 - 0.3.0
+ 
+- Integrating `toggl_cache` for Toggl reports. For now, Toggl reports are accessible through the `toggl_cache_reports` table. No ETL performed on Toggl reports.
+- Added `script/import`: initial import script to handle import of all Toggl reports which requires a start date.
+- Minor updates of bundle and Ruby version.
+
 ## 2017-02-23 - 0.2.3
 
 - Fixed `jira_cache` integration (bug when initialize the webhook app).
