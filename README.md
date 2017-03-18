@@ -1,8 +1,8 @@
 # Agilizer Source
 
-[![Build Status](https://travis-ci.org/jobteaser/agilizer_source.svg)](https://travis-ci.org/jobteaser/agilizer_source)
-[![Coverage Status](https://coveralls.io/repos/jobteaser/agilizer/badge.svg?branch=master&service=github)](https://coveralls.io/github/jobteaser/agilizer?branch=master)
-[![Code Climate](https://codeclimate.com/github/jobteaser/agilizer/badges/gpa.svg)](https://codeclimate.com/github/jobteaser/agilizer)
+[![Build Status](https://travis-ci.org/jobteaser/agilizer_source.svg?branch=master)](https://travis-ci.org/jobteaser/agilizer_source)
+[![Test Coverage](https://codeclimate.com/repos/58cd572875a7ea0451000451/badges/9fbf2df5b14046b201be/coverage.svg)](https://codeclimate.com/repos/58cd572875a7ea0451000451/coverage)
+[![Code Climate](https://codeclimate.com/repos/58cd572875a7ea0451000451/badges/9fbf2df5b14046b201be/gpa.svg)](https://codeclimate.com/repos/58cd572875a7ea0451000451/feed)
 
 ## About
 
