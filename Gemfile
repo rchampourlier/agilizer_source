@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 source "https://rubygems.org"
 
-ruby "2.3.1"
+ruby "2.3.3"
 
 # Base
 gem "rake"
@@ -17,10 +17,10 @@ gem "thread"
 gem "hash_op",
   git: "https://github.com/rchampourlier/hash_op",
   ref: "master"
-# gem "hash_op", path: "~/Dev/_personal/+agilizer/hash_op"
 
 # Interfaces
 gem "jira_cache", "~> 0.2.2"
+gem "toggl_cache", "~> 0.1.0"
 
 # Enrichments
 gem "rest-client"

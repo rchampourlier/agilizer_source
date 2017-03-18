@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-# Clear cache and performs a full sync.
+# Delete all JiraCache's issues.
 #
 # Usage:
 #     script/clear_jira_cache

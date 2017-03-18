@@ -1,7 +1,10 @@
 #!/usr/bin/env ruby
 
-# Clear Agilizer"s issues (not JiraCache"s) and performs a full sync
-# from JiraCache"s data.
+# Delete all Agilizer data (but not source data cached, like
+# JiraCache's and TogglCache's).
+#
+# To rebuild all Agilizer data from the caches, you may use
+# this script: `scripts/process_cache`.
 #
 # Usage:
 #     bin/clear_agilizer

@@ -25,7 +25,7 @@ module Agilizer
       end
 
       # Performs a sync through `JiraCache.sync_issue`.
-      def import_all
+      def import_all(client: default_jira_cache_client)
         JiraCache.sync_issues(client: client)
       end
 

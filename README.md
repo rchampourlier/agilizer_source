@@ -36,6 +36,14 @@ bin/console
 
 ## Getting started
 
+### Initial import
+
+```
+# DATE is a Ruby-parseable date. Toggl reports will be fetched
+# from this date.
+script/import DATE
+```
+
 ### Reprocess all issues cached in JiraCache store
 
 ```

@@ -1,5 +1,8 @@
 #!/usr/bin/env ruby
 
+# Triggers a reprocess by AgilizerSource for every JiraCache issue
+# in the database.
+#
 # For each issue in JiraCache, not marked as deleted in JIRA
 # (field `deleted_from_jira_at`), send a "fetched_issue" event
 # to the Agilizer::Interface::JIRA::Notifier so that

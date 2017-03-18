@@ -5,7 +5,7 @@
 #   - monitoring and alerting,
 #   - etc.
 module Agilizer
-  VERSION = "0.0.1"
+  VERSION = File.read(File.expand_path('../../VERSION', __FILE__)).strip
 
   Error = Class.new(StandardError)
 end
