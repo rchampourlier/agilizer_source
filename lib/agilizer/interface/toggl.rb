@@ -21,7 +21,9 @@ module Agilizer
 
       # Performs a sync through `TogglCache.sync_issue`.
       #
-      # @param date_since [Date]
+      # @param date_since [Date]: date from which Toggl reports must be
+      #   fetched. If not specified, `toggl_cache` gem default is used
+      #   (one week).
       def import_all(date_since: nil)
         return TogglCache.sync_reports(date_since: date_since) if date_since
         TogglCache.sync_reports
