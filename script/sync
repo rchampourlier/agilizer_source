@@ -47,4 +47,3 @@ logger.info "Deleted issues for the following identifiers: #{deleted_issue_keys}
 require "agilizer/interface/toggl"
 toggl_interface = Agilizer::Interface::Toggl.new(logger: logger)
 toggl_interface.import_all
-
