@@ -1,20 +1,20 @@
 #!/usr/bin/env ruby
 
-# Fetch new content from the different integrations.
+# Daily synchronization of JIRA issues.
 #
-# Currently:
-#   - import JIRA issues,
-#   - import Toggl reports.
-#
-# The synchronization is built to be run regularly.
-# It should be scheduled using a _crontab_ or similar
-# mechanism (e.g. Heroku Scheduler add-on).
-#
-# NB: for the initial import, the `script/import` script
-# must be used.
+# Fetches and synchronizes all JIRA issues for all projects.#
 #
 # Usage:
-#     script/sync
+#
+#     script/sync_daily_jira
+#
+# NB:
+#
+# - This synchronization should be run daily.
+#   It should be scheduled using a _crontab_ or similar
+#   mechanism (e.g. Heroku Scheduler add-on).
+# - For the initial import, the `script/import` script
+#   must be used.
 
 require "rubygems"
 require "bundler/setup"
@@ -26,10 +26,6 @@ require "logger"
 logger = Logger.new(STDOUT)
 logger.level = Logger.const_get(ENV["JIRA_LOG_LEVEL"].to_sym)
 
-########
-# JIRA #
-########
-
 require "agilizer/interface/jira"
 jira_interface = Agilizer::Interface::JIRA.new(logger: logger)
 jira_interface.import_all
@@ -39,11 +35,3 @@ require "jira_cache/data/issue_repository"
 deleted_issue_keys = JiraCache::Data::IssueRepository.keys_for_deleted_issues
 Agilizer::Data::IssueRepository.delete_where(identifier: deleted_issue_keys)
 logger.info "Deleted issues for the following identifiers: #{deleted_issue_keys}"
-
-#########
-# Toggl #
-#########
-
-require "agilizer/interface/toggl"
-toggl_interface = Agilizer::Interface::Toggl.new(logger: logger)
-toggl_interface.import_all

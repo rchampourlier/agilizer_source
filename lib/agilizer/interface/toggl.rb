@@ -29,6 +29,10 @@ module Agilizer
         TogglCache.sync_reports
       end
 
+      def sync
+        TogglCache.sync_check_and_fix(logger: @logger)
+      end
+
       private
 
       def default_toggl_config

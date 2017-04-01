@@ -24,7 +24,10 @@ bin/deploy
 heroku run script/sync
 ```
 
-To keep the Agilizer's database synchronized, there are 2 options:
+## Synchronization
 
-- setup a scheduled job to run the `bin/sync` script (using Heroku Scheduler plugin),
-- configure a JIRA webhook on the `/jira` endpoint (see doc/jira_webhook_setup.md for more details).
+To keep the Agilizer's database synchronized, you must:
+
+- Setup a JIRA webhook on the `/jira` endpoint (see doc/jira_webhook_setup.md for more details).
+- Setup a scheduled job to run the `script/sync_jira` script (e.g. Heroku Scheduler plugin).
+- Setup a scheduled job to run the `script/sync_toggl` script.
