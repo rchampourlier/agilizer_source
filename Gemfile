@@ -20,7 +20,7 @@ gem "hash_op",
 
 # Interfaces
 gem "jira_cache", "~> 0.2.2"
-gem "toggl_cache", "~> 0.1.0"
+gem "toggl_cache", "~> 0.2.1"
 
 # Enrichments
 gem "rest-client"
