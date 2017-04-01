@@ -5,10 +5,15 @@ require "agilizer/interface/jira/notifier"
 module Agilizer
   module Interface
 
-    # Importer for JIRA.
+    # Import/synchronization interface for JIRA.
+    #
+    # To import all issues from all projects:
+    #
+    #     Agilizer::Interface::JIRA.import_all
     #
     # To perform a JIRA project issue full sync:
-    #     Agilizer::Interface::JIRA.import(project_key, client_options)
+    #
+    #     Agilizer::Interface::JIRA.import_project(project_key)
     #
     # To transform JIRA data for a single issue:
     #     Agilizer::Interface::JIRA::Transformations.run(data)
