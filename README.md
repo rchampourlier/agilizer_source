@@ -63,9 +63,9 @@ script/sync
 script/process_cache
 ```
 
-## Deployment
+## Documentation
 
-See the specific documentation in [doc/deploy.md](//doc/deploy.md).
+Have a look to the documentation in [doc](//doc) for information on deployment, JIRA webhook configuration and the synchronization strategies.
 
 ## Troubleshooting
 
