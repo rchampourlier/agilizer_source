@@ -1,0 +1,20 @@
+# Synchronization explained
+
+## JIRA
+
+JIRA synchronization is done through 2 ways:
+
+1. Webhooks
+2. API polling
+
+### Webhooks
+
+An endpoint (provided by `JIRACache`) is opened and connected to JIRA webhook (see [JIRA Webhook Setup doc](//doc/jira_webhook_setup.md)). On each webhook call, the issue is then fetched using the API and updated (through JIRACache, which then sends an _event_ using `JIRA::Notifier` to trigger the Agilizer's processing of the issue).
+
+### API polling
+
+The `script/sync_daily_jira` script performs a full synchronization of JIRA issues using the JIRA API.
+
+## Toggl
+
+`script/sync_daily_toggl` and `script/sync_hourly_toggl` are used to perform Toggl reports synchronization. The _smart_ synchronization strategy provided by `TogglCache` is used to detect deleted records.

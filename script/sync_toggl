@@ -1,0 +1,33 @@
+# frozen_string_literal: true
+#!/usr/bin/env ruby
+
+# Daily synchronization of Toggl reports.
+#
+# Performs a synchronization of Toggl reports from the date of the oldest
+# one in the database.
+#
+# Usage:
+#
+#     script/sync_daily_toggl
+#
+# NB:
+#
+# - The synchronization is built to be run regularly.
+#   It should be scheduled using a _crontab_ or similar
+#   mechanism (e.g. Heroku Scheduler add-on).
+# - For the initial import, the `script/import` script
+#   must be used.
+
+require "rubygems"
+require "bundler/setup"
+
+$LOAD_PATH.unshift File.expand_path("../..", __FILE__)
+require "config/boot"
+
+require "logger"
+logger = Logger.new(STDOUT)
+logger.level = Logger::INFO
+
+require "agilizer/interface/toggl"
+toggl_interface = Agilizer::Interface::Toggl.new(logger: logger)
+toggl_interface.sync
