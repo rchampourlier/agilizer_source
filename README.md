@@ -4,6 +4,17 @@
 [![Test Coverage](https://codeclimate.com/repos/58cd572875a7ea0451000451/badges/9fbf2df5b14046b201be/coverage.svg)](https://codeclimate.com/repos/58cd572875a7ea0451000451/coverage)
 [![Code Climate](https://codeclimate.com/repos/58cd572875a7ea0451000451/badges/9fbf2df5b14046b201be/gpa.svg)](https://codeclimate.com/repos/58cd572875a7ea0451000451/feed)
 
+---
+
+# ARCHIVED / DEPRECATED REPOSITORY
+
+This repository is now deprecated. It will not be maintained anymore. It will be replaced by simpler, smaller, independent projects written in Golang to achieve the same result:
+
+- [Agilizer Source for Jira](https://github.com/rchampourlier/agilizer-source-jira)
+- [Agilizer Source for Github](https://github.com/rchampourlier/agilizer-source-github)
+
+---
+
 ## About
 
 ### What is Agilizer?
